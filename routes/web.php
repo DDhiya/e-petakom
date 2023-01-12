@@ -83,7 +83,7 @@ Route::get('/home', function () {
 });
 
 Route::view('activities', 'ManageProfile.profile-student')->name('activities');
-Route::view('calendar', 'ManageProfile.profile-student')->name('calendar');
+Route::view('calendar', 'ManageCalendar.fullcalender')->name('calendar');
 Route::view('report', 'ManageProfile.profile-student')->name('report');
 Route::view('proposal', 'ManageProfile.profile-student')->name('proposal');
 Route::view('election', 'electioncommittee.ce-student')->name('election');
@@ -119,6 +119,12 @@ Route::post('committee_update', [CommitteeController::class, 'update']);
 // COORDINATOR CONTROLLER
 Route::get('coordinator-profile', [CoordinatorController::class, 'index']);
 Route::post('coordinator_update', [CoordinatorController::class, 'update']);
+
+
+// Manage Yearly Calendar
+
+Route::get('fullcalender', [FullCalenderController::class, 'index']);
+Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
 //----------Committee Election Routing
 //----------
