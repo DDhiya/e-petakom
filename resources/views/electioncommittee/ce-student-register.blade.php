@@ -15,19 +15,19 @@ $roles = session()->get('role');
     <div class="electionregister__container">
         <br />
         <h1 style="font-size: 1.8rem;">Register As Candidate</h1>
-        <button class="electionuploadregister">
-            <form>
+        <form action="RegisterNewCandidate" method="post" enctype="multipart/form-data" id="registercandidate">
+        @csrf
+            <div style="text-align:center">
+            <button class="electionuploadregister">
                 <input type="image" name="candidateprofileimage" src="./images/upload-file.png" width="60" height="60">
-                <!--<img class="file" src="./images/upload-file.png">-->
-            </form>
+            </div>
         </button>
         <br />
         <a>
-            <h2 style="text-align:center;">Upload Profile Image</h2>
+            <h3 style="text-align:center;">Upload Profile Image</h3>
         </a>
         <div class="electionforms__container">
             <div class="electionform__container">
-                <form>
                     <div class="electionform_inputname_manifesto">
                         <div class="electionforminputname">
                             <h4>Name: </h4>
@@ -36,7 +36,8 @@ $roles = session()->get('role');
 
                         <div class="electionforminputname">
                             <h4>Manifesto: </h4>
-                            <input class="electiontextform_manifesto" type="text" name="studentmanifesto" />
+                            <textarea class="electionmanifesto" name="studentmanifesto" form="registercandidate"></textarea>
+                            <!-- <input class="electiontextform_manifesto" type="text" name="studentmanifesto"/> -->
                         </div>
                     </div>
                     <br />
@@ -81,8 +82,7 @@ First term
                             <h3>Register</h3>
                         </button>
                     </div>
-
-                </form>
             </div>
         </div>
+</form>
 @endsection

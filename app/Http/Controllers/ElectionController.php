@@ -28,15 +28,49 @@ class ElectionController extends Controller
     public function RegisterNewCandidate(Request $request)
     {
         $registered = new RegisteredCandidate();
-        $registered->matricid = $request->matricid;
-        $registered->name = $request->name;
-        $registered->major = $request->major;
-        $registered->intake = $request->intake;
-        $registered->manifesto = $request->manifesto;
-        $registered->profilepicture = $request->profilepicture;
+        $registered->matricid = $request->input('studentmatricid');
+        $registered->name = $request->input('studentname');
+        $registered->position = $request->input('studentposition');
+        $registered->manifesto = $request->input('studentmanifesto');
+        $registered->profilepicture = $request->input('candidateprofileimage');
+
+        $matricidmajor = substr($registered->matricid, 0, 2);
+
+        if ($matricidmajor == 'CB' || $matricidmajor == 'cb' || $matricidmajor == 'Cb'){
+            $registered->major = 'Software Engineering';
+        }
+        else if ($matricidmajor == 'CD' || $matricidmajor == 'cd' || $matricidmajor == 'Cd'){
+            $registered->major = 'Graphics & Multimedia';
+        }
+        else if ($matricidmajor == 'CA' || $matricidmajor == 'ca' || $matricidmajor == 'Ca'){
+            $registered->major = 'Computer Sys & Networking';
+        }
+        else if ($matricidmajor == 'CC' || $matricidmajor == 'cc' || $matricidmajor == 'Cc'){
+            $registered->major = 'Computer Science Diploma';
+        }
+
+        $matricidintake = substr($registered->matricid, 2, 2);
+
+        if ($matricidintake == '16' || $matricidintake == '17' || $matricidintake == '18'){
+            $registered->intake = 'Final Year';
+        }
+        else if ($matricidintake == '19'){
+            $registered->intake = 'Year 4';
+        }
+        else if ($matricidintake == '20'){
+            $registered->intake = 'Year 3';
+        }
+        else if ($matricidintake == '21'){
+            $registered->intake = 'Year 2';
+        }
+        else if ($matricidintake == '22'){
+            $registered->intake = 'Year 1';
+        }
+        // $registered->major = $request->major;
+        // $registered->intake = $request->intake;
 
         if ($registered->save())
-            return true;
+            return view('electioncommittee/ce-student');
     }
 
     public function GetRegisteredCandidate()

@@ -9,8 +9,13 @@ class RegisteredCandidate extends Model
 {
     use HasFactory;
 
+    public $table = 'registered_candidates';
+    public $primaryKey = 'id';
+    public $incrementing = true;
+    public $timestamps = false;
+
     protected $fillables = [
-      'matricid', 'name', 'major', 'intake',
+      'matricid', 'name', 'position', 'major', 'intake',
       'manifesto', 'profilepicture',
     ];
 }

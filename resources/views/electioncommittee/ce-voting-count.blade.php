@@ -14,7 +14,7 @@ $roles = session()->get('role');
     </div>
     <div class="electionregister__container">
         <br />
-        <p class="sub__title">Manage Candidate Registration</p>
+        <p class="sub__title">Voting Count</p>
         
     </div>
 @endsection

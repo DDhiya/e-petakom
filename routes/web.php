@@ -7,6 +7,7 @@ use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\ElectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,6 +140,8 @@ Route::view('electionmanage', 'electioncommittee.ce-committee-election')->name('
 //Shared Committee/Coordinator
 Route::view('electionmanageregister', 'electioncommittee.ce-manage-registration')->name('electionmanageregister');
 Route::view('votingcount', 'electioncommittee.ce-voting-count')->name('votingcount');
+
+Route::post('RegisterNewCandidate', [ElectionController::class, 'RegisterNewCandidate']);
 
 Route::get('/cec', function () {
     return view('electioncommittee/ce-committee');
