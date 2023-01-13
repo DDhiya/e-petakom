@@ -23,7 +23,7 @@ class FullCalenderController extends Controller
              return response()->json($data);
         }
   
-        return view('fullcalender');
+        return view('vieweditcalendar');
     }
  
     /**
@@ -65,5 +65,9 @@ class FullCalenderController extends Controller
              # code...
              break;
         }
+    }
+    public function view(Request $request)
+    {
+        return view('viewcalendar');
     }
 }

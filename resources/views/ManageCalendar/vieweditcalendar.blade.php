@@ -9,8 +9,10 @@ $roles = session()->get('role');
 @extends('layouts.maincalendar')
 
 @section('content')
+
 <div class="container" style="max-width: 1000px">
     <h1 style="text-align:center;">Petakom Calendar </h1>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div id='calendar'></div>
 </div>
    
@@ -37,6 +39,7 @@ var calendar = $('#calendar').fullCalendar({
                                 event.allDay = false;
                         }
                     },
+                    
                     selectable: true,
                     selectHelper: true,
                     select: function (start, end, allDay) {
