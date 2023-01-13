@@ -22,16 +22,6 @@ $roles = session()->get('role');
                     </button>
                 </td>
             </a>
-
-            <a href="{{route('electionregister')}}">
-                <td>
-                    <button class="electionmain">
-                
-                        <h2>Register As Candidate</h2>
-                
-                    </button>
-                </td>
-            </a>
             
             <a href="{{route('electionvote')}}">
                 <button class="electionmain">
