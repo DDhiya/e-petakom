@@ -13,7 +13,7 @@ $roles = session()->get('role');
                 <h1 class="main__title">Committee Election</h1>
             </div>
             <br>
-            <p class="sub__title">Manage Candidate Registration</p>
+            <p class="sub__title">Manage Election</p>
             <div class="mainelection__container">
                 <button class="electionmain">
                 

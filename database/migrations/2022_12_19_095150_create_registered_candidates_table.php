@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('registered_candidates', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('matricid')->unique();
+            $table->string('name');
+            $table->string('position');
+            $table->string('major');
+            $table->string('intake');
+            $table->string('manifesto');
+            $table->string('profilepicture')->nullable();
         });
     }
 
