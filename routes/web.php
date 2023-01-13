@@ -8,6 +8,7 @@ use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ElectionController;
+use App\Http\Controllers\FullCalenderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,7 +85,7 @@ Route::get('/home', function () {
 });
 
 Route::view('activities', 'ManageProfile.profile-student')->name('activities');
-Route::view('calendar', 'ManageCalendar.fullcalender')->name('calendar');
+Route::view('calendar', 'ManageCalendar.vieweditcalendar')->name('calendar');
 Route::view('report', 'ManageProfile.profile-student')->name('report');
 Route::view('proposal', 'ManageProfile.profile-student')->name('proposal');
 Route::view('election', 'electioncommittee.ce-student')->name('election');
@@ -125,6 +126,7 @@ Route::post('coordinator_update', [CoordinatorController::class, 'update']);
 // Manage Yearly Calendar
 
 Route::get('fullcalender', [FullCalenderController::class, 'index']);
+Route::get('viewcalendar', [FullCalenderController::class, 'view']);
 Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
 //----------Committee Election Routing
