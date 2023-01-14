@@ -143,8 +143,15 @@ Route::view('electionmanage', 'electioncommittee.ce-committee-election')->name('
 Route::view('electionmanageregister', 'electioncommittee.ce-manage-registration')->name('electionmanageregister');
 Route::view('votingcount', 'electioncommittee.ce-voting-count')->name('votingcount');
 
+//Controllers
 Route::post('RegisterNewCandidate', [ElectionController::class, 'RegisterNewCandidate']);
+Route::post('ApproveCandidate', [ElectionController::class, 'ApproveNewCandidate']);
 
+Route::controller(ElectionController::class)->group(function(){
+    Route::get('electionmanageregistration', 'GetRegisteredCandidate')->name('getpositionlist');
+});
+
+//testing routes
 Route::get('/cec', function () {
     return view('electioncommittee/ce-committee');
 });
@@ -178,3 +185,8 @@ Route::get('/ceo', function () {
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/testsidebar', function(){
+    return view('electioncommittee.test');
+});
