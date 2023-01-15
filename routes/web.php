@@ -9,6 +9,7 @@ use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\BulletinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,7 +90,7 @@ Route::view('calendar', 'ManageCalendar.vieweditcalendar')->name('calendar');
 Route::view('report', 'ManageProfile.profile-student')->name('report');
 Route::view('proposal', 'ManageProfile.profile-student')->name('proposal');
 Route::view('election', 'electioncommittee.ce-student')->name('election');
-Route::view('bulletin', 'ManageProfile.profile-student')->name('bulletin');
+Route::view('bulletin', 'ManageBulletin.AddBulletin')->name('bulletin');
 
 // VIEW ROUTES
 Route::view('register', 'layouts.main');
@@ -146,9 +147,13 @@ Route::view('votingcount', 'electioncommittee.ce-voting-count')->name('votingcou
 //Controllers
 Route::post('RegisterNewCandidate', [ElectionController::class, 'RegisterNewCandidate']);
 Route::post('ApproveCandidate', [ElectionController::class, 'ApproveNewCandidate']);
+Route::post('VoteCandidate', [ElectionController::class, 'RegisterVote']);
 
 Route::controller(ElectionController::class)->group(function(){
     Route::get('electionmanageregistration', 'GetRegisteredCandidate')->name('getpositionlist');
+    Route::get('electionvotecandidate', 'GetApprovedCandidate')->name('getcandidates');
+    Route::get('changeelectionstatus', 'GetElectionStatus')->name('getstatus');
+    Route::get('changeelection', 'SetElectionStatus')->name('changeelection');
 });
 
 //testing routes
@@ -167,6 +172,18 @@ Route::get('/cer', function () {
 Route::get('/ceo', function () {
     return view('electioncommittee/ce-coordinator');
 });
+
+//bulletin
+//view bulletin homepage
+Route::get('ViewBulletinHomepage', [BulletinController::class, 'viewBulletinHomepage']);
+//end view bulletin homepage
+Route::get('AddBulletin', [BulletinController::class, 'BulletinInterface']);
+Route::get('ViewBulletin', [BulletinController::class, 'viewBulletin']);
+Route::post('ManageBulletin', 'BulletinController@addBulletin');
+Route::get('click_edit/{bulletinID}','BulletinController@edit_function');
+Route::get('click_delete/{bulletinID}','BulletinController@delete');
+Route::post('update','BulletinController@modify_function');
+Route::post('back','BulletinController@back');
 
 // Route::middleware([
 //     'auth:sanctum',

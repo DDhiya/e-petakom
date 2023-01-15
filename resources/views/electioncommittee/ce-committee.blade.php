@@ -20,7 +20,7 @@ $roles = session()->get('role');
                 </button>
             </a>
 
-                <a href="{{route('electionmanage')}}">
+                <a href="{{route('getstatus')}}">
                 <button class="electionmain">
                     <h2>Manage Election</h2>
                 </button>
