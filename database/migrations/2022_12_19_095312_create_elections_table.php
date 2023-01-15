@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('elections', function (Blueprint $table) {
             $table->id();
-            $table->string('status');
-            $table->timestamp('changetime');
+            $table->string('status')->default('OFF');
+            $table->timestamp('changetime')->default(\Carbon\Carbon::now()->toDateTimeString());
         });
     }
 
