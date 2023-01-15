@@ -147,8 +147,7 @@ $roles = session()->get('role');
                         <div class="matric__id">
                             <h4>Matric ID</h4>
                             <div class="input__field">
-                                <input type="matric-id" class="matric-id" value="{{ $students[0]->username }}"
-                                    name="username">
+                                <input type="matric-id" class="matric-id" value="{{ $students[0]->username }}" name="matric-id">
                             </div>
                         </div>
                     </div>

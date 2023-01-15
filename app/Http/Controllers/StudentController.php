@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
-use App\Models\Authentication;
 use Illuminate\Http\Request;
+use App\Models\Authentication;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
-use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -18,6 +19,7 @@ class StudentController extends Controller
      */
     public function index()
     {
+        
         $username = session()->get('logged_user');
         $authentication = DB::table('authentications')
             ->Join('students', 'authentications.username', '=', 'students.username')
@@ -35,7 +37,7 @@ class StudentController extends Controller
      */
     public function update(Request $request)
     {
-        $username = $request->input('username');
+        $username = $request->input('matric-id');
         $password = $request->input('password');
         $student_first_name = $request->input('student_first_name');
         $student_last_name = $request->input('student_last_name');
@@ -50,13 +52,13 @@ class StudentController extends Controller
         $student_year = $request->input('student_year');
         $student_semester = $request->input('student_semester');
         $student_picture = $request->input('student_picture');
-        
+
         //table authentications
         $authentications = Authentication::where('username', '=', session()->get('logged_user'))->get()->first();
         $authentications->username = $username;
         $authentications->password = $password;
         $authentications->save();
-        
+
         //table students
         $students = Student::where('username', '=', session()->get('logged_user'))->get()->first();
         $students->username = $username;
