@@ -75,6 +75,7 @@ class StudentController extends Controller
         $students->student_year = $student_year;
         $students->student_semester = $student_semester;
         $students->student_picture = $student_picture;
+        Session::put('logged_user', $username);
         $students->save();
         return redirect("student-profile");
     }
