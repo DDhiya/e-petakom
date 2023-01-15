@@ -137,10 +137,6 @@ Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 // Manage Proposal & Report
 
 // Proposal Routing
-Route::resource('/proposal', [ProposalController::class, 'index']);
-
-//Report Routing
-Route::get('/report', [ReportController::class, 'index']);
 
 //----------Committee Election Routing
 //----------
