@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('intake');
             $table->string('manifesto');
             $table->string('profilepicture')->nullable();
-            $table->integer('votes');
+            $table->integer('votecount');
         });
     }
 

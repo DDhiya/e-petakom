@@ -19,7 +19,12 @@ $roles = session()->get('role');
         @csrf
             <div style="text-align:center">
             <button class="electionuploadregister">
-                <input type="image" name="candidateprofileimage" src="./images/upload-file.png" width="60" height="60">
+                <input type="file" name="candidateprofileimage" id="cdprofimage" 
+                width="60" height="60" class="profilepicture_fileupload form-control @error('image') is-invalid @enderror">
+                
+                @error('image')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
         </button>
         <br />
@@ -65,7 +70,7 @@ $roles = session()->get('role');
                     <br />
                     <h4>Terms & Conditions of becoming a member of the PETAKOM Committee </h4>
                     <br />
-                    <textarea class="electionterms" label="terms" rows="7">
+                    <textarea class="electionterms" label="terms" rows="7" disabled>
 First term
 First term
 First term
@@ -75,12 +80,12 @@ First term
                             </textarea>
                     <br />
                     <div style="text-align:center">
+                        <a href="{{url()->previous()}}">
                         <button class="electionnormal">
-                            <h3>Cancel</h3>
+                            <h3 style="font-size:medium">Cancel</h3>
                         </button>
-                        <button class="electionnormal">
-                            <h3>Register</h3>
-                        </button>
+                        </a>
+                        <input class="submitelection" type="submit" value="Register">
                     </div>
             </div>
         </div>
