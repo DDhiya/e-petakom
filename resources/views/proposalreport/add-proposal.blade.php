@@ -6,14 +6,15 @@ $roles = session()->get('role');
 
 ?>
 
-@extends('layouts.main-proposal&report')
+@extends('layouts.main-proposalreport')
 
 @section('content')
 <div class="card">
   <div class="card-header">Proposal</div>
   <div class="card-body">
       
-    <form action="{{ url('proposal') }}" method="post">
+    <!-- <form action="{{ url('prop') }}" method="post"> -->
+    <form action="prop" method="post">
         {!! csrf_field() !!}
         <label>Author</label></br>
         <input type="text" name="Author" id="Author" class="form-control"></br>

@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Report extends Model
+class prop extends Model
 {
     use HasFactory;
-    protected $table = 'report';
+    protected $table = 'prop';
     protected $primarykey ='id';
-    protected $fillable = ['Author', 'Title', 'File', 'Report'];
+    protected $fillable = ['Author', 'MatricID', 'Title','File'];
 }

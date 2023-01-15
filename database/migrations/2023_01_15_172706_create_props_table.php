@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('report',function (Blueprint $table){
+        Schema::create('prop' ,function (Blueprint $table){
             $table->id();
             $table->string('Author');
+            $table->string('MatricID');
             $table->string('Title')->nullable();
             $table->string('File')->nullable();
-            $table->string('report')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('report');
+        Schema::dropIfExists('prop');
     }
 };
