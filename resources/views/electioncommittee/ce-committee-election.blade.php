@@ -15,16 +15,12 @@ $roles = session()->get('role');
             <br>
             <p class="sub__title">Manage Election</p>
             <div class="mainelection__container">
-                <button class="electionmain">
-                
-                    <h2>Start Election</h2>
-                
-                </button>
 
+            <a href="{{route('changeelection')}}">
                 <button class="electionmain">
-                
-                    <h2>Stop Election</h2>
-                
+                <h2 style="white-space: nowrap;">Change Election Status</h2><br>
+                <h2 style="white-space: nowrap;">Current Status: {{$status}}</h2>
                 </button>
+            </a>
             </div>
 @endsection

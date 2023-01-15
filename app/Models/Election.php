@@ -9,7 +9,12 @@ class Election extends Model
 {
     use HasFactory;
 
+    public $table = 'elections';
+    public $primaryKey = 'id';
+    public $incrementing = true;
+    public $timestamps = false;
+
     protected $fillables = [
-      'changeid', 'status', 'starttime', 'endtime'
+      'status', 'changetime'
     ];
 }
