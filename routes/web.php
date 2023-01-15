@@ -10,8 +10,12 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\BulletinController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\PropController;
 
+=======
+use App\Http\Controllers\ActivitiesController;
+>>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,7 +93,7 @@ Route::get('/home', function () {
 // Route::get('/upload', [StudentController::class, 'create']);
 // Route::post('/upload', [StudentController::class, 'store']);
 
-Route::view('activities', 'ManageProfile.profile-student')->name('activities');
+Route::view('activities', 'ManageActivities.AddActivities')->name('activities');
 Route::view('calendar', 'ManageCalendar.vieweditcalendar')->name('calendar');
 Route::view('report', 'ManageProfile.profile-student')->name('report');
 Route::view('prop', 'proposalreport.view-proposal')->name('prop');
@@ -199,6 +203,28 @@ Route::get('click_delete/{bulletinID}','BulletinController@delete');
 Route::post('update','BulletinController@modify_function');
 Route::post('back','BulletinController@back');
 //end bulletin
+
+
+//Activities comittee
+Route::get('AddActivities', [ActivitiesController::class, 'ActivitiesInterface']);
+Route::get('ViewActivities', [ActivitiesController::class, 'viewActivities']);
+Route::post('ManageActivities', 'ActivitiesController@addActivities');
+Route::get('c_edit/{activitiesid}','ActivitiesController@edit_function');
+Route::get('c_delete/{activitiesid}','ActivitiesController@delete');
+Route::post('update','ActivitiesController@modify_function');
+//Route::post('back','ActivitiesController@back');
+Route::get('Participations', [ActivitiesController::class, 'Participations']);
+
+///////////////////////joinnew student
+Route::get('AddJoinActivities', [ActivitiesController::class, 'JoinActivitiesInterface']);
+Route::get('ViewJoinActivities', [ActivitiesController::class, 'viewJoinActivities']);
+Route::post('ManageActivities2', 'ActivitiesController@addJoinActivities');
+Route::get('click_deletecancel/{activitiestittle}','ActivitiesController@deletecancel');
+//Activities
+
+//Route::post('backjoin','ActivitiesController@backjoin');
+
+
 
 // Route::middleware([
 //     'auth:sanctum',
