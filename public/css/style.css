@@ -389,11 +389,11 @@ main section.middle__container {
     padding: var(--card-padding);
     border-radius: 1rem;
     margin-top: 3rem;
-    height: 77%;
+    height: 90%;
 }
 
 .profile__picture__container {
-    height: 70%;
+    height: 95%;
 }
 
 .tertiary__container {
@@ -527,6 +527,8 @@ main section.middle__container {
     font-family: poppins, sans-serif;
     font-weight: 600;
     margin: 10px 0;
+    position: relative;
+    top: -1rem;
     cursor: pointer;
 }
 
@@ -618,7 +620,16 @@ select.form-select {
 
 .input-group {
     position: relative;
-    top: 13.5rem;
+    top: 15.5rem;
+}
+
+.faculty__details_container {
+    position: relative;
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: 1rem;
+    margin-top: -1rem;
+    height: 93%;
 }
 
 /* ======= MEDIA QUERIES FOR TABLETS (REPONSIVE DESIGN) ======== */

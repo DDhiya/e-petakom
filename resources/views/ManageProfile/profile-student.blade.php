@@ -95,7 +95,7 @@ $roles = session()->get('role');
                         </div>
                     </div>
                 </div>
-                <div class="fourth__container">
+                <div class="fourth__container faculty__details_container">
                     <div class="course__dropdown">
                         <h4>Course</h1>
                             <select class="form-select course-dropdown" name="student_course">
@@ -148,9 +148,6 @@ $roles = session()->get('role');
                                     name="username">
                             </div>
                         </div>
-                    </div>
-                    <div class="update__button__container">
-                        <button class="update__button">Update</button>
                     </div>
                 </div>
             </div>
