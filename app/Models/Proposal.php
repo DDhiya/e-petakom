@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Proposal extends Model
 {
     use HasFactory;
+    protected $table = 'proposal';
+    protected $primarykey ='id';
+    protected $fillable = ['Author', 'MatricID', 'Title', 'File'];
 }
