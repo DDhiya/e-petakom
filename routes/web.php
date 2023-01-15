@@ -187,6 +187,7 @@ Route::get('click_edit/{bulletinID}','BulletinController@edit_function');
 Route::get('click_delete/{bulletinID}','BulletinController@delete');
 Route::post('update','BulletinController@modify_function');
 Route::post('back','BulletinController@back');
+//end bulletin
 
 // Route::middleware([
 //     'auth:sanctum',

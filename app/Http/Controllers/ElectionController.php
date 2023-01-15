@@ -45,7 +45,7 @@ class ElectionController extends Controller
 
         $registered->profilepicture = $request->file('candidateprofileimage')->
             store('public/images');
-        dd($registered->profilepicture);
+        //dd($registered->profilepicture);
         $matricidmajor = substr($registered->matricid, 0, 2);
 
         if ($matricidmajor == 'CB' || $matricidmajor == 'cb' || $matricidmajor == 'Cb'){
