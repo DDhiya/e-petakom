@@ -14,7 +14,7 @@ class ProposalController extends Controller
     public function index()
     {
         $proposal = Proposal::all();
-        return view ('proposalreport.index')->with('proposalreport', $proposal);
+        return view ('proposalreport.index-proposal')->with('proposalreport', $proposal);
     }
 
     /**

@@ -14,7 +14,7 @@ class ReportController extends Controller
     public function index()
     {
         $report = Report::all();
-        return view ('proposalreport.index')->with('proposalreport', $report);
+        return view ('proposalreport.index-report')->with('proposalreport', $report);
     }
 
     /**
