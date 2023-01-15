@@ -51,7 +51,12 @@ class StudentController extends Controller
         $student_course = $request->input('student_course');
         $student_year = $request->input('student_year');
         $student_semester = $request->input('student_semester');
-        $student_picture = $request->input('student_picture');
+        if($request->hasFile('image')){
+            $logoImage = $request->file('image');
+            $name = $logoImage->getClientOriginalName();
+            $size = $logoImage->getSize();
+        }
+        $request->file('image')->store('public/images/');
 
         //table authentications
         $authentications = Authentication::where('username', '=', session()->get('logged_user'))->get()->first();
@@ -74,7 +79,8 @@ class StudentController extends Controller
         $students->student_course = $student_course;
         $students->student_year = $student_year;
         $students->student_semester = $student_semester;
-        $students->student_picture = $student_picture;
+        $students->student_picture = $name;
+        $students->student_picture_size = $size;
         Session::put('logged_user', $username);
         $students->save();
         return redirect("student-profile");

@@ -10,7 +10,7 @@ $roles = session()->get('role');
 
 
 @section('content')
-    <form action="student_update" method="POST">
+    <form action="student_update" method="POST" enctype="multipart/form-data">
         <div class="header__container">
             <h1>Manage Profile</h1>
         </div>
@@ -90,10 +90,12 @@ $roles = session()->get('role');
                 <div class="fourth__container profile__picture__container">
                     <div class="profile__picture">
                         <h1>Profile Picture</h1>
-                        {{-- <img id="preview-myimg" src="{{ ($authentications->img) ? url('/upload/admin/student/', $authentications->img) : 'https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png' }}" alt="preview image" style="height: 300px;"> --}}
+                        {{-- <img src="{{ Storage::url("/storage/app/{$students[0]->student_picture}") }}" alt="" height="100px"> --}}
+                        @foreach ($students as $student)
+                            <li><img src="{{ asset('storage/images/'.$students[0]->student_picture) }}" height="100px"></li>
+                        @endforeach
                         <div class="file__upload__container">
-                            <input type="file" name="photo">
-                            <input type="submit" name="Upload">
+                            <input type="file" name="image">
                         </div>
 
                     </div>
