@@ -90,10 +90,7 @@ $roles = session()->get('role');
                 <div class="fourth__container profile__picture__container">
                     <div class="profile__picture">
                         <h1>Profile Picture</h1>
-                        {{-- <img src="{{ Storage::url("/storage/app/{$students[0]->student_picture}") }}" alt="" height="100px"> --}}
-                        @foreach ($students as $student)
-                            <li><img src="{{ asset('storage/images/'.$students[0]->student_picture) }}" height="100px"></li>
-                        @endforeach
+                        <img src="{{ asset('storage/images/'.$students[0]->student_picture) }}" height="100px">
                         <div class="file__upload__container">
                             <input type="file" name="image">
                         </div>

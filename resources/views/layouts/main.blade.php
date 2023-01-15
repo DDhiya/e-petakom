@@ -57,7 +57,7 @@ $roles = session()->get('role');
             </div>
             <div class="profile__container">
                 <div class="profile__photo">
-                    <img src="../images/profile-1.png">
+                    <img src="{{ asset('storage/images/'.$students[0]->student_picture) }}" class="profile-picture-navbar">
                 </div>
                 <h5 class="mt-2">{{ $logged_user }}</h5>
             </div>

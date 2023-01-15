@@ -295,6 +295,12 @@ span.show {
     overflow: hidden;
 }
 
+.profile__area .profile-picture-navbar {
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: white;
+}
+
 .navigation__bar .profile__area button {
     display: none;
 }
