@@ -13,7 +13,8 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        //
+        $proposal = Proposal::all();
+        return view ('proposalreport.index')->with('proposalreport', $proposal);
     }
 
     /**
@@ -23,7 +24,7 @@ class ProposalController extends Controller
      */
     public function create()
     {
-        //
+        return view('proposalreport.add-proposal');
     }
 
     /**
@@ -34,7 +35,9 @@ class ProposalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Proposal::create($input);
+        return redirect('proposal')->with('flash_message', 'Proposal.Added!');
     }
 
     /**
@@ -45,7 +48,8 @@ class ProposalController extends Controller
      */
     public function show($id)
     {
-        //
+        $proposal = Proposal::find($id);
+        return view('proposalreport.update-proposal')->with('proposalreport'.$proposal);
     }
 
     /**
@@ -56,7 +60,8 @@ class ProposalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proposal = Proposal::find($id);
+        return view('proposalreport.view-proposal')->with('proposalreport'. $proposal);
     }
 
     /**
@@ -68,7 +73,10 @@ class ProposalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proposal = Proposal::find($id);
+        $input = $request->all();
+        $proposal->update($input);
+        return redirect('proposal')->with('flash_message'. 'Proposal Updated!');
     }
 
     /**
@@ -79,6 +87,7 @@ class ProposalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Proposal::destroy($id);
+        return redirect('proposal')->with('flash_message'.'Proposal Deleted!');
     }
 }
