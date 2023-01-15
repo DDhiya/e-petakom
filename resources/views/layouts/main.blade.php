@@ -59,7 +59,7 @@ $roles = session()->get('role');
                 <div class="profile__photo">
                     <img src="../images/profile-1.png">
                 </div>
-                <h5 class="mt-2">CB19070</h5>
+                <h5 class="mt-2">{{ $logged_user }}</h5>
             </div>
             <button id="menu__btn">
                 <span class="material-symbols-rounded">
