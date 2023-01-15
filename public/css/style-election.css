@@ -131,6 +131,21 @@ input[type="submit"].submitelection:hover {
     color: var(--color-white);
 }
 
+a.electionnormal {
+
+    padding: 1rem;
+    border:2px solid var(--card-border-radius);
+    border-radius: var(--card-border-radius);
+    background-color: var(--color-gray-light);
+    color: var(--color-white);
+    transition-duration: 0.4s;
+}
+
+a.electionnormal:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
 /* ------------------ ASIDE AND SIDEBAR ------------------*/
 
 main section.middle__container .electionheader__container {

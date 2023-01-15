@@ -115,6 +115,171 @@ $roles = session()->get('role');
                     </tr>
                 </table>
         </div>
+
+        <br>
+        <div class="positionlist__table">
+            <h2 class="position__title">Entrepreneurship & Logistics Portfolio Candidates</h2>
+            <br>
+                <table>    
+                    <tr>
+                        @foreach ($logisticlist as $list)
+                           <td class="positionlist"><img src="{{Storage::url($list->profilepicture)}}" class="candidate_image_reg"></td>
+                        @endforeach
+                    </tr>
+            
+                    <tr>
+                        @foreach ($logisticlist as $list)
+                            <td class="positionlist">{{$list->name}}</td>
+                        @endforeach
+                    </tr>
+            
+                    <tr>
+                        @foreach ($logisticlist as $list)
+                            <td class="positionlist">{{$list->intake}} {{$list->major}}</td>
+                        @endforeach
+                    </tr>
+
+                    <tr>
+                        @foreach($logisticlist as $list)
+                            <td class="positionlist"><input type="checkbox" id="select{{$list->matricid}}" 
+                                name="selectcandidate[]" value="{{$list->matricid}}">
+                                <label for="select{{$list->matricid}}">Select</label></td>
+                        @endforeach
+                    </tr>
+                </table>
+        </div>
+
+        <br>
+        <div class="positionlist__table">
+            <h2 class="position__title">Community & International Relations Portfolio Candidates</h2>
+            <br>
+                <table>    
+                    <tr>
+                        @foreach ($relationslist as $list)
+                           <td class="positionlist"><img src="{{Storage::url($list->profilepicture)}}" class="candidate_image_reg"></td>
+                        @endforeach
+                    </tr>
+            
+                    <tr>
+                        @foreach ($relationslist as $list)
+                            <td class="positionlist">{{$list->name}}</td>
+                        @endforeach
+                    </tr>
+            
+                    <tr>
+                        @foreach ($relationslist as $list)
+                            <td class="positionlist">{{$list->intake}} {{$list->major}}</td>
+                        @endforeach
+                    </tr>
+
+                    <tr>
+                        @foreach($relationslist as $list)
+                            <td class="positionlist"><input type="checkbox" id="select{{$list->matricid}}" 
+                                name="selectcandidate[]" value="{{$list->matricid}}">
+                                <label for="select{{$list->matricid}}">Select</label></td>
+                        @endforeach
+                    </tr>
+                </table>
+        </div>
+
+        <br>
+        <div class="positionlist__table">
+            <h2 class="position__title">Multimedia Portfolio Candidates</h2>
+            <br>
+                <table>    
+                    <tr>
+                        @foreach ($multimedialist as $list)
+                           <td class="positionlist"><img src="{{Storage::url($list->profilepicture)}}" class="candidate_image_reg"></td>
+                        @endforeach
+                    </tr>
+            
+                    <tr>
+                        @foreach ($multimedialist as $list)
+                            <td class="positionlist">{{$list->name}}</td>
+                        @endforeach
+                    </tr>
+            
+                    <tr>
+                        @foreach ($multimedialist as $list)
+                            <td class="positionlist">{{$list->intake}} {{$list->major}}</td>
+                        @endforeach
+                    </tr>
+
+                    <tr>
+                        @foreach($multimedialist as $list)
+                            <td class="positionlist"><input type="checkbox" id="select{{$list->matricid}}" 
+                                name="selectcandidate[]" value="{{$list->matricid}}">
+                                <label for="select{{$list->matricid}}">Select</label></td>
+                        @endforeach
+                    </tr>
+                </table>
+        </div>
+
+        <br>
+        <div class="positionlist__table">
+            <h2 class="position__title">Welfare Portfolio Candidates</h2>
+            <br>
+                <table>    
+                    <tr>
+                        @foreach ($welfarelist as $list)
+                           <td class="positionlist"><img src="{{Storage::url($list->profilepicture)}}" class="candidate_image_reg"></td>
+                        @endforeach
+                    </tr>
+            
+                    <tr>
+                        @foreach ($welfarelist as $list)
+                            <td class="positionlist">{{$list->name}}</td>
+                        @endforeach
+                    </tr>
+            
+                    <tr>
+                        @foreach ($welfarelist as $list)
+                            <td class="positionlist">{{$list->intake}} {{$list->major}}</td>
+                        @endforeach
+                    </tr>
+
+                    <tr>
+                        @foreach($welfarelist as $list)
+                            <td class="positionlist"><input type="checkbox" id="select{{$list->matricid}}" 
+                                name="selectcandidate[]" value="{{$list->matricid}}">
+                                <label for="select{{$list->matricid}}">Select</label></td>
+                        @endforeach
+                    </tr>
+                </table>
+        </div>
+
+        <br>
+        <div class="positionlist__table">
+            <h2 class="position__title">Academic & Career Portfolio Candidates</h2>
+            <br>
+                <table>    
+                    <tr>
+                        @foreach ($academiclist as $list)
+                           <td class="positionlist"><img src="{{Storage::url($list->profilepicture)}}" class="candidate_image_reg"></td>
+                        @endforeach
+                    </tr>
+            
+                    <tr>
+                        @foreach ($academiclist as $list)
+                            <td class="positionlist">{{$list->name}}</td>
+                        @endforeach
+                    </tr>
+            
+                    <tr>
+                        @foreach ($academiclist as $list)
+                            <td class="positionlist">{{$list->intake}} {{$list->major}}</td>
+                        @endforeach
+                    </tr>
+
+                    <tr>
+                        @foreach($academiclist as $list)
+                            <td class="positionlist"><input type="checkbox" id="select{{$list->matricid}}" 
+                                name="selectcandidate[]" value="{{$list->matricid}}">
+                                <label for="select{{$list->matricid}}">Select</label></td>
+                        @endforeach
+                    </tr>
+                </table>
+        </div>
         <div style="text-align:center">
                 <input class="submitelection" type="submit" name="action" value="Approve">
                 <input class="submitelection" type="submit" name="action" value="Reject">

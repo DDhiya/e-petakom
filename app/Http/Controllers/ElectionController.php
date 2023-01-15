@@ -45,7 +45,7 @@ class ElectionController extends Controller
 
         $registered->profilepicture = $request->file('candidateprofileimage')->
             store('public/images');
-
+        dd($registered->profilepicture);
         $matricidmajor = substr($registered->matricid, 0, 2);
 
         if ($matricidmajor == 'CB' || $matricidmajor == 'cb' || $matricidmajor == 'Cb'){
@@ -173,49 +173,98 @@ class ElectionController extends Controller
     public function GetElectionStatus()
     {
         //query last row of status column value
-        $electionstatus = new Election();
-        return $electionstatus;
+        $electionrow = Election::first();
+        $status = $electionrow->status;
+
+        return view('electioncommittee.ce-committee-election', compact('status'));
     }
 
-    public function SetElectionStatus($electionstatus)
+    public function SetElectionStatus()
     {
-        $election = new Election();
-        if ($electionstatus == 'OFF')
-        {
-            $election->starttime = \Carbon\Carbon::now()->timestamp;
-            $election->electionstatus = 'ON';
-        }
-        else if ($electionstatus == 'ON')
-        {
-            $election->endtime = \Carbon\Carbon::now()->timestamp;
-            $election->electionstatus = 'OFF';
-        }
+        $electionrow = Election::first();
+        //$electiontable = Election::latest()->get();
+        $status = $electionrow->status;
+
+        if ($status == 'OFF')
+            $status = 'ON';
+
+        else if ($status == 'ON') 
+            $status = 'OFF';
+
         else
             throw new Exception("Election Status is not set properly");
+
+        $changetime = \Carbon\Carbon::now()->toDateTimeString();
+
+        Election::where('id', '=', 1)
+                    ->update(['status' => $status,
+                            'changetime' => $changetime]);
+
+        $electionrow = Election::first();
+        $status = $electionrow->status;
+
+        return view('electioncommittee.ce-committee-election', compact('status'));
     }
 
     public function GetApprovedCandidate()
     {
-        $approvedcandidate = ApprovedCandidate::all();
-        return $approvedcandidate;
-        //use view?
+        $highcouncillist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Majlis Tertinggi')
+                                ->get();
+
+        $publicitylist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Hebahan & Publisiti')
+                                ->get();
+
+        $logisticlist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Keusahawanan & Logistik')
+                                ->get();
+
+        $sportslist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Sukan & Rekreasi')
+                                ->get();
+        
+        $relationslist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Komuniti Luar & Hubungan Antarabangsa')
+                                ->get();
+
+        $multimedialist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Multimedia')
+                                ->get();
+                                
+        $welfarelist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Sahsiah & Kebajikan')
+                                ->get();
+
+        $academiclist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Akademik & Kerjaya')
+                                ->get();
+        // dd($highcouncillist);
+
+        $electionrow = Election::first();
+        $status = $electionrow->status;
+
+        return view('electioncommittee.ce-student-vote', compact('status',
+                                                                        'highcouncillist', 
+                                                                        'publicitylist', 
+                                                                        'logisticlist',
+                                                                        'sportslist',
+                                                                        'relationslist',
+                                                                        'multimedialist',
+                                                                        'welfarelist',
+                                                                        'academiclist'));
     }
 
     public function RegisterVote(Request $request)
     {
-        /*FOR each row in req
-
-            ApprovedCandidate->matricid = req->matricid
-
-            votes = get() votecount value
-
-            votes = votes  + 1
-
-            votecount = votes
-
-            votecount->save()
-         */
-
+        foreach ($request->input('votecandidate') as $candidate) {
+            $voting = ApprovedCandidate::where('matricid', '=', $candidate);
+            $voting->increment('votecount');
+            // DB::table('approved_candidates')
+            //             ->where('matricid', '=', $candidate)
+            //             ->update(['votecount']);
+        }
+        return to_route('election');
     }
 
     public function GetVotingCount()
