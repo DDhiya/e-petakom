@@ -91,10 +91,10 @@ $roles = session()->get('role');
                     <div class="profile__picture">
                         <h1>Profile Picture</h1>
                         {{-- <img id="preview-myimg" src="{{ ($authentications->img) ? url('/upload/admin/student/', $authentications->img) : 'https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png' }}" alt="preview image" style="height: 300px;"> --}}
-                        <div class="file__upload__container">
+                        {{-- <div class="file__upload__container">
                             <input type="file" name="photo">
                             <input type="submit" name="Upload">
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>

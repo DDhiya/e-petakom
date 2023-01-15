@@ -45,7 +45,7 @@ class AuthenticationController extends Controller
                 // Save into session
                 Session::put('role', $role);
                 Session::put('logged_user', $username); //put the data and in session
-
+                
                 return redirect('home');
 
             } else {

@@ -85,8 +85,8 @@ Route::get('/home', function () {
     }
 });
 
-Route::get('/upload', [StudentController::class, 'create']);
-Route::post('/upload', [StudentController::class, 'store']);
+// Route::get('/upload', [StudentController::class, 'create']);
+// Route::post('/upload', [StudentController::class, 'store']);
 
 Route::view('activities', 'ManageProfile.profile-student')->name('activities');
 Route::view('calendar', 'ManageCalendar.vieweditcalendar')->name('calendar');
