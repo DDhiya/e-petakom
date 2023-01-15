@@ -10,12 +10,9 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\BulletinController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\PropController;
 
-=======
 use App\Http\Controllers\ActivitiesController;
->>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
