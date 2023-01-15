@@ -56,7 +56,7 @@ class StudentController extends Controller
             $name = $logoImage->getClientOriginalName();
             $size = $logoImage->getSize();
         }
-        $request->file('image')->store('public/images/');
+        $request->file('image')->storeAs('public/images/', $name);
 
         //table authentications
         $authentications = Authentication::where('username', '=', session()->get('logged_user'))->get()->first();
