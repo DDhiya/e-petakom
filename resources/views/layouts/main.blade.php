@@ -66,7 +66,7 @@ $roles = session()->get('role');
                     menu
                 </span>
             </button>
-            <button type="button" class="btn btn-danger">Logout</button>
+            <a href="{{ route('user-logout') }}" class="btn btn-danger" role="button">Logout</a>
         </div>
     </div>
 </div>
