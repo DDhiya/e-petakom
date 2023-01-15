@@ -10,6 +10,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\BulletinController;
+use App\Http\Controllers\PropController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,7 +92,7 @@ Route::get('/home', function () {
 Route::view('activities', 'ManageProfile.profile-student')->name('activities');
 Route::view('calendar', 'ManageCalendar.vieweditcalendar')->name('calendar');
 Route::view('report', 'ManageProfile.profile-student')->name('report');
-Route::view('proposal', 'ManageProfile.profile-student')->name('proposal');
+Route::view('prop', 'proposalreport.view-proposal')->name('prop');
 Route::view('election', 'electioncommittee.ce-student')->name('election');
 Route::view('bulletin', 'ManageBulletin.AddBulletin')->name('bulletin');
 
@@ -135,6 +136,10 @@ Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
 
 // Manage Proposal & Report
+
+Route::get('prop', [PropController::class, 'index'])->name('prop');
+// Route::get('viewcalendar', [FullCalenderController::class, 'view']);
+// Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
 // Proposal Routing
 

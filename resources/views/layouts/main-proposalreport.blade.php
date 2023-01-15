@@ -92,11 +92,11 @@ $roles = session()->get('role');
                 <span class="material-symbols-rounded">list_alt</span>
                 <h4>Report</h4>
             </a>
-            <a href="{{ route('prop') }}" class="sidebar__btn">
+            <a href="{{ route('prop') }}" class="sidebar__btn active-sidebar-btn">
                 <span class="material-symbols-rounded">edit_document</span>
                 <h4>Proposal</h4>
             </a>
-            <a href="{{ route('election') }}" class="sidebar__btn active-sidebar-btn">
+            <a href="{{ route('election') }}" class="sidebar__btn">
                 <span class="material-symbols-rounded">diversity_3</span>
                 <h4>Committee<br>Election</h4>
             </a>
