@@ -133,8 +133,14 @@ Route::get('fullcalender', [FullCalenderController::class, 'index']);
 Route::get('viewcalendar', [FullCalenderController::class, 'view']);
 Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
+
+// Manage Proposal & Report
+
+// Proposal Routing
+
 //----------Committee Election Routing
 //----------
+
 
 //Student
 Route::view('electionregister', 'electioncommittee.ce-student-register')->name('electionregister');

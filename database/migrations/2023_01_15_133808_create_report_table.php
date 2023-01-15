@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('elections', function (Blueprint $table) {
+        Schema::create('report',function (Blueprint $table){
             $table->id();
-            $table->string('status')->default('OFF');
-            $table->timestamp('changetime')->default(\Carbon\Carbon::now()->toDateTimeString());
+            $table->string('Author');
+            $table->string('Title')->nullable();
+            $table->string('File')->nullable();
+            $table->string('report')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('elections');
+        Schema::dropIfExists('report');
     }
 };

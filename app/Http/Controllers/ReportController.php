@@ -13,7 +13,8 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        $report = Report::all();
+        return view ('proposalreport.index-report')->with('proposalreport', $report);
     }
 
     /**
@@ -23,7 +24,7 @@ class ReportController extends Controller
      */
     public function create()
     {
-        //
+        return view('proposalreport.add-report');
     }
 
     /**
@@ -34,7 +35,9 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Report::create($input);
+        return redirect('report')->with('flash_message', 'Report.Added!');
     }
 
     /**
@@ -45,7 +48,8 @@ class ReportController extends Controller
      */
     public function show($id)
     {
-        //
+        $report = Report::find($id);
+        return view('proposalreport.update-report')->with('proposalreport'.$report);
     }
 
     /**
@@ -56,7 +60,8 @@ class ReportController extends Controller
      */
     public function edit($id)
     {
-        //
+        $report = Report::find($id);
+        return view('proposalreport.view-report')->with('proposalreport'. $report);
     }
 
     /**
@@ -68,7 +73,10 @@ class ReportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $report = Report::find($id);
+        $input = $request->all();
+        $report->update($input);
+        return redirect('report')->with('flash_message'. 'Report Updated!');
     }
 
     /**
@@ -79,6 +87,7 @@ class ReportController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Report::destroy($id);
+        return redirect('report')->with('flash_message'.'Report Deleted!');
     }
 }
