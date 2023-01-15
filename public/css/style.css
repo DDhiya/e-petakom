@@ -137,7 +137,7 @@ span.hide {
     height: 20px;
     position: relative;
     left: 420px;
-    bottom: 47px;
+    bottom: 35px;
     cursor: pointer;
 }
 
@@ -150,7 +150,7 @@ span.show {
     height: 20px;
     position: relative;
     left: 420px;
-    bottom: 47px;
+    bottom: 35px;
     cursor: pointer;
 }
 
@@ -472,7 +472,7 @@ main section.middle__container {
 .input__field>.matric-id {
     height: 3.6rem;
     background: transparent;
-    margin: 15px 0;
+    margin: 22px 0;
     border: 2px solid var(--color-gray-very-light);
     border-radius: 0.5rem;
     align-items: center;
