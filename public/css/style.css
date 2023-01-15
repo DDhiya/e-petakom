@@ -299,6 +299,10 @@ span.show {
     display: none;
 }
 
+.navigation__bar .profile__area .btn-danger {
+    display:flex;
+}
+
 /* ------------------ ASIDE AND SIDEBAR ------------------*/
 
 main {
