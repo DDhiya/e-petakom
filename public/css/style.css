@@ -453,7 +453,7 @@ main section.middle__container {
     color: var(--color-dark);
 }
 
-.main__container input {
+main input.input__text {
     height: 1rem;
     background: transparent;
     margin: 8px 0 3px;
@@ -618,11 +618,6 @@ select.form-select {
     transition: var(--transition);
 }
 
-.input-group {
-    position: relative;
-    top: 15.5rem;
-}
-
 .faculty__details_container {
     position: relative;
     background: var(--color-white);
@@ -630,6 +625,11 @@ select.form-select {
     border-radius: 1rem;
     margin-top: -1rem;
     height: 93%;
+}
+
+.file__upload__container {
+    position: relative;
+    margin-top: 17rem;
 }
 
 /* ======= MEDIA QUERIES FOR TABLETS (REPONSIVE DESIGN) ======== */

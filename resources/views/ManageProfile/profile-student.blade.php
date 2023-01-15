@@ -21,53 +21,60 @@ $roles = session()->get('role');
                     <div class="input__field">
                         <h4>First Name</h4>
                         <input id="tbprofession" type="first-name" value="{{ $students[0]->student_first_name }}"
-                            name="student_first_name">
+                            class="input__text" name="student_first_name">
                     </div>
                     <div class="input__field">
                         <h4>Last Name</h4>
                         <input id="tbprofession" type="last-name" value="{{ $students[0]->student_last_name }}"
-                            name="student_last_name">
+                            class="input__text" name="student_last_name">
                     </div>
                 </div>
                 <div class="double__input__field">
                     <div class="email__input__field">
                         <h4>Email</h4>
-                        <input type="email" value="{{ $students[0]->student_email }}" name="student_email">
+                        <input class="input__text" type="email" value="{{ $students[0]->student_email }}"
+                            name="student_email">
                     </div>
                     <div class="mobile__no">
                         <h4>Mobile No</h4>
-                        <input type="mobile-no" value="{{ $students[0]->student_mobile_no }}" name="student_mobile_no">
+                        <input class="input__text" type="mobile-no" value="{{ $students[0]->student_mobile_no }}"
+                            name="student_mobile_no">
                     </div>
                 </div>
                 <div class="address__">
                     <h4>Address</h4>
-                    <input type="address" value="{{ $students[0]->student_address }}" name="student_address">
+                    <input class="input__text" type="address" value="{{ $students[0]->student_address }}"
+                        name="student_address">
                 </div>
                 <div class="double__input__field">
                     <div class="input__field">
                         <h4>City</h4>
-                        <input type="city" value="{{ $students[0]->student_city }}" name="student_city">
+                        <input class="input__text" type="city" value="{{ $students[0]->student_city }}"
+                            name="student_city">
                     </div>
                     <div class="input__field">
                         <h4>State</h4>
-                        <input type="state" value="{{ $students[0]->student_state }}" name="student_state">
+                        <input class="input__text" type="state" value="{{ $students[0]->student_state }}"
+                            name="student_state">
                     </div>
                 </div>
                 <div class="double__input__field">
                     <div class="email__input__field">
                         <h4>Zip Code</h4>
-                        <input type="zipcode" value="{{ $students[0]->student_zipcode }}" name="student_zipcode">
+                        <input class="input__text" type="zipcode" value="{{ $students[0]->student_zipcode }}"
+                            name="student_zipcode">
                     </div>
                     <div class="mobile__no">
                         <h4>Country</h4>
-                        <input type="country" value="{{ $students[0]->student_country }}" name="student_country">
+                        <input class="input__text" type="country" value="{{ $students[0]->student_country }}"
+                            name="student_country">
                     </div>
                 </div>
                 <div class="password__">
                     <div>
                         <h4>Password</h4>
                     </div>
-                    <input type="password" class="input2" value="{{ $students[0]->password }}" name="password">
+                    <input type="password" class="input2 input__text" value="{{ $students[0]->password }}" name="password">
                     <span class="material-symbols-outlined show">
                         visibility
                     </span>
@@ -83,16 +90,12 @@ $roles = session()->get('role');
                 <div class="fourth__container profile__picture__container">
                     <div class="profile__picture">
                         <h1>Profile Picture</h1>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <a href=""><span class="input-group-text" id="inputGroupFileAddon01">Upload</span></a>
-                            </div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                    aria-describedby="inputGroupFileAddon01">
-                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                            </div>
+                        {{-- <img id="preview-myimg" src="{{ ($authentications->img) ? url('/upload/admin/student/', $authentications->img) : 'https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png' }}" alt="preview image" style="height: 300px;"> --}}
+                        <div class="file__upload__container">
+                            <input type="file" name="photo">
+                            <input type="submit" name="Upload">
                         </div>
+
                     </div>
                 </div>
                 <div class="fourth__container faculty__details_container">

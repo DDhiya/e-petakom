@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Student;
-use App\Models\Authentication;
 use Illuminate\Http\Request;
+use App\Models\Authentication;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
-use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -74,6 +75,7 @@ class StudentController extends Controller
         $students->student_semester = $student_semester;
         $students->student_picture = $student_picture;
         $students->save();
+
         return redirect("student-profile");
     }
 
