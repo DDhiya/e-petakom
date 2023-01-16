@@ -217,7 +217,7 @@ Route::get('ViewBulletin', [BulletinController::class, 'viewBulletin']);
 Route::post('ManageBulletin', 'BulletinController@addBulletin');
 Route::get('click_edit/{bulletinID}','BulletinController@edit_function');
 Route::get('click_delete/{bulletinID}','BulletinController@delete');
-Route::post('update','BulletinController@modify_function');
+Route::post('updatebulletin','BulletinController@modify_function');
 Route::post('back','BulletinController@back');
 //end bulletin
 
