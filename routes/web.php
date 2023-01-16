@@ -94,7 +94,6 @@ Route::view('activities', 'ManageActivities.AddActivities')->name('activities');
 Route::view('calendar', 'ManageCalendar.vieweditcalendar')->name('calendar');
 Route::view('rep', 'proposalreport.add-report')->name('rep');
 Route::view('prop', 'proposalreport.add-proposal')->name('prop');
-Route::view('election', 'electioncommittee.ce-student')->name('election');
 Route::view('bulletin', 'ManageBulletin.AddBulletin')->name('bulletin');
 
 // VIEW ROUTES
@@ -157,6 +156,26 @@ Route::get('cli_delete/{id}','RepController@destroy');
 //----------Committee Election Routing
 //----------
 
+Route::get('election', function () {
+    $logged_user = session()->get('logged_user');
+    $role = session()->get('role');
+
+    if (!$logged_user) {
+        return view('layouts.login-signup');
+    } else {
+        if ($role == 'Dean') {
+            return redirect('dean-profile');
+        } elseif ($role == 'Student') {
+            return view('electioncommittee.ce-student');
+        } elseif ($role == 'Lecturer') {
+            return redirect('lecturer-profile');
+        } elseif ($role == 'Committee') {
+            return view('electioncommittee.ce-committee');
+        } elseif ($role == 'Coordinator') {
+            return view('electioncommittee.ce-coordinator');
+        }
+    }
+})->name('election');
 
 //Student
 Route::view('electionregister', 'electioncommittee.ce-student-register')->name('electionregister');
@@ -208,7 +227,7 @@ Route::get('ViewBulletin', [BulletinController::class, 'viewBulletin']);
 Route::post('ManageBulletin', 'BulletinController@addBulletin');
 Route::get('click_edit/{bulletinID}','BulletinController@edit_function');
 Route::get('click_delete/{bulletinID}','BulletinController@delete');
-Route::post('update','BulletinController@modify_function');
+Route::post('updatebulletin','BulletinController@modify_function');
 Route::post('back','BulletinController@back');
 //end bulletin
 

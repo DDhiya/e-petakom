@@ -6,7 +6,7 @@
     --color-gray-light: #86848c;
     --color-gray-dark: #56555e;
     --color-gray-very-light: #D9D9D9;
-    --color-dark: rgba(85,85,85,.8);
+    --color-dark: rgba(85, 85, 85, .8);
     --color-primary: #d11520;
     --color-primary-dropdown: #323645;
     --color-success: rgb(34, 202, 75);
@@ -297,7 +297,7 @@ span.show {
 
 .profile__area .profile-picture-navbar {
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 30%;
     background-color: white;
 }
 
@@ -306,7 +306,7 @@ span.show {
 }
 
 .navigation__bar .profile__area .btn-danger {
-    display:flex;
+    display: flex;
 }
 
 /* ------------------ ASIDE AND SIDEBAR ------------------*/
@@ -399,11 +399,16 @@ main section.middle__container {
     padding: var(--card-padding);
     border-radius: 1rem;
     margin-top: 3rem;
-    height: 90%;
+    height: 80%;
 }
 
 .profile__picture__container {
-    height: 95%;
+    height: 30rem;
+}
+
+.profile__picture .profile-picture-manageprofile {
+    object-fit: cover;
+    height: 20rem;
 }
 
 .tertiary__container {
@@ -482,7 +487,7 @@ main input.input__text {
 .input__field>.matric-id {
     height: 3.6rem;
     background: transparent;
-    margin: 22px 0;
+    margin:14px 0;
     border: 2px solid var(--color-gray-very-light);
     border-radius: 0.5rem;
     align-items: center;
@@ -602,7 +607,7 @@ select.form-select {
     padding: var(--card-padding);
 }
 
-.main__container input:hover {  
+.main__container input:hover {
     border: 2px solid var(--color-warning);
     transition: var(--transition);
 }
@@ -634,12 +639,37 @@ select.form-select {
     padding: var(--card-padding);
     border-radius: 1rem;
     margin-top: -1rem;
-    height: 93%;
+    height: 70%;
 }
 
 .file__upload__container {
     position: relative;
-    margin-top: 17rem;
+    margin-top: 2rem;
+}
+
+.portfolio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1rem;
+}
+
+
+
+.portfolio-dropdown {
+    background: var(--form-select-bg);
+    height: var(--form-select-height);
+    width: 138px;
+    border: var(--form-select-border);
+    border-radius: var(--form-select-border-radius);
+    background: var(--form-select-background);
+    color: var(--form-select-color);
+    font-family: var(--form-select-font-family);
+    font-weight: var(--form-select-font-weight);
+    margin: 15px 0;
+    cursor: var(--form-select-cursor);
+    padding: var(--form-select-padding);
+    font-size: var(--form-select-font-size);
 }
 
 /* ======= MEDIA QUERIES FOR TABLETS (REPONSIVE DESIGN) ======== */

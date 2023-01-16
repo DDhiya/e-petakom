@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('committees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('username');
+            $table->string('username');
             $table->string('committee_first_name')->nullable();
             $table->string('committee_last_name')->nullable();
             $table->string('committee_email');
@@ -24,10 +24,13 @@ return new class extends Migration
             $table->string('committee_city')->nullable();
             $table->string('committee_state')->nullable();
             $table->string('committee_zipcode')->nullable();
+            $table->string('committee_country')->nullable();
             $table->string('committee_course')->nullable();
             $table->string('committee_year')->nullable();
             $table->string('committee_semester')->nullable();
             $table->string('committee_picture')->nullable();
+            $table->string('committee_picture_size')->nullable();
+            $table->string('committee_portfolio')->nullable();
             $table->string('committee_position')->nullable();
             $table->timestamps();
         });
