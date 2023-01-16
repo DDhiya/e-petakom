@@ -1,17 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RepController;
 use App\Http\Controllers\DeanController;
+use App\Http\Controllers\PropController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\BulletinController;
+use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\CommitteeController;
-use App\Http\Controllers\CoordinatorController;
-use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\ElectionController;
-use App\Http\Controllers\FullCalenderController;
-use App\Http\Controllers\BulletinController;
-use App\Http\Controllers\PropController;
 use App\Http\Controllers\ActivitiesController;
+use App\Http\Controllers\CoordinatorController;
+use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\AuthenticationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,8 +92,8 @@ Route::get('/home', function () {
 
 Route::view('activities', 'ManageActivities.AddActivities')->name('activities');
 Route::view('calendar', 'ManageCalendar.vieweditcalendar')->name('calendar');
-Route::view('report', 'ManageProfile.profile-student')->name('report');
-Route::view('prop', 'proposalreport.view-proposal')->name('prop');
+Route::view('rep', 'proposalreport.add-report')->name('rep');
+Route::view('prop', 'proposalreport.add-proposal')->name('prop');
 Route::view('election', 'electioncommittee.ce-student')->name('election');
 Route::view('bulletin', 'ManageBulletin.AddBulletin')->name('bulletin');
 
@@ -138,6 +139,20 @@ Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 // Manage Proposal & Report
 
 Route::get('prop', [PropController::class, 'index'])->name('prop');
+Route::get('prop1', [PropController::class, 'create'])->name('prop1');
+Route::get('prop2', [PropController::class, 'store'])->name('prop2');
+Route::get('prop3', [PropController::class, 'show'])->name('prop3');
+Route::get('prop4', [PropController::class, 'edit'])->name('prop4');
+Route::get('prop5', [PropController::class, 'update'])->name('prop5');
+Route::get('prop6', [PropController::class, 'destroy'])->name('prop6');
+
+Route::get('rep', [RepController::class, 'index'])->name('rep');
+Route::get('rep1', [RepController::class, 'create'])->name('rep1');
+Route::get('rep2', [RepController::class, 'store'])->name('rep2');
+Route::get('rep3', [RepController::class, 'show'])->name('rep3');
+Route::get('rep4', [RepController::class, 'edit'])->name('rep4');
+Route::get('rep5', [RepController::class, 'update'])->name('rep5');
+Route::get('rep6', [RepController::class, 'destroy'])->name('rep6');
 // Route::get('viewcalendar', [FullCalenderController::class, 'view']);
 // Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 

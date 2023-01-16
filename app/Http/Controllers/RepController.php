@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\prop;
+
+use App\Models\Rep;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PropController extends Controller
+class RepController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +15,10 @@ class PropController extends Controller
      */
     public function index()
     {
-        $prop = DB::table('prop')->get();
-        $url = route('prop');
+        $rep = DB::table('reps')->get();
+        $url = route('rep');
         // return view('index-proposal');
-        return view('proposalreport.add-proposal' ,compact('prop'));
-
+        return view('proposalreport.add-report' ,compact('rep'));
     }
 
     /**
@@ -28,7 +28,7 @@ class PropController extends Controller
      */
     public function create()
     {
-        return view('proposalreport.add-proposal');
+        return view('proposalreport.add-report');
     }
 
     /**
@@ -40,8 +40,8 @@ class PropController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        prop::create($input);
-        return redirect('prop')->with('flash_message', 'Proposal.Added!');
+        Rep::create($input);
+        return redirect('rep')->with('flash_message', 'Report.Added!');
     }
 
     /**
@@ -52,8 +52,8 @@ class PropController extends Controller
      */
     public function show($id)
     {
-        $prop = prop::find($id);
-        return view('proposalreport.update-proposal')->with('proposalreport'.$prop);
+        $rep = rep::find($id);
+        return view('proposalreport.update-report')->with('proposalreport'.$rep);
     }
 
     /**
@@ -64,8 +64,8 @@ class PropController extends Controller
      */
     public function edit($id)
     {
-        $prop = prop::find($id);
-        return view('proposalreport.view-proposal')->with('proposalreport'. $prop);
+        $rep = rep::find($id);
+        return view('proposalreport.view-report')->with('proposalreport'. $rep);
     }
 
     /**
@@ -77,10 +77,10 @@ class PropController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $prop = prop::find($id);
+        $rep = rep::find($id);
         $input = $request->all();
-        $prop->update($input);
-        return redirect('prop')->with('flash_message'. 'Proposal Updated!');
+        $rep->update($input);
+        return redirect('rep')->with('flash_message'. 'Report Updated!');
     }
 
     /**
@@ -91,7 +91,7 @@ class PropController extends Controller
      */
     public function destroy($id)
     {
-        prop::destroy($id);
-        return redirect('prop')->with('flash_message'.'Proposal Deleted!');
+        rep::destroy($id);
+        return redirect('rep')->with('flash_message'.'Report Deleted!');
     }
 }
