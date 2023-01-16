@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Committee;
-use App\Models\Authentication;
 use Illuminate\Http\Request;
+use App\Models\Authentication;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreCommitteeRequest;
 use App\Http\Requests\UpdateCommitteeRequest;
-use Illuminate\Support\Facades\DB;
 
 class CommitteeController extends Controller
 {
@@ -34,22 +36,23 @@ class CommitteeController extends Controller
      */
     public function update(Request $request)
     {
-        $username = $request->input('username');
+        $username = $request->input('matric-id');
         $password = $request->input('password');
         $committee_first_name = $request->input('committee_first_name');
         $committee_last_name = $request->input('committee_last_name');
         $committee_email = $request->input('committee_email');
-        $committee_mobile_no = $request->input('committee_mobile_no'); 
+        $committee_mobile_no = $request->input('committee_mobile_no');
         $committee_address = $request->input('committee_address');
-        $committee_city = $request->input('studednt_city');
+        $committee_city = $request->input('committee_city');
+        $committee_country = $request->input('committee_country');
         $committee_state = $request->input('committee_state');
         $committee_zipcode = $request->input('committee_zipcode');
         $committee_course = $request->input('committee_course');
         $committee_year = $request->input('committee_year');
         $committee_semester = $request->input('committee_semester');
-        $committee_picture = $request->input('committee_picture');
+        $committee_portfolio = $request->input('committee_portfolio');
         $committee_position = $request->input('committee_position');
-        
+
         //table authentications
         $authentications = Authentication::where('username', '=', session()->get('logged_user'))->get()->first();
         $authentications->username = $username;
@@ -58,23 +61,54 @@ class CommitteeController extends Controller
 
         //table committees
         $committees = Committee::where('username', '=', session()->get('logged_user'))->get()->first();
-        $committees->username = $username;
-        $committees->committee_first_name = $committee_first_name;
-        $committees->committee_last_name = $committee_last_name;
-        $committees->committee_email = $committee_email;
-        $committees->committee_mobile_no = $committee_mobile_no;
-        $committees->committee_address = $committee_address;
-        $committees->committee_city = $committee_city;
-        $committees->committee_state = $committee_state;
-        $committees->committee_zipcode = $committee_zipcode;
-        $committees->committee_course = $committee_course;
-        $committees->committee_year = $committee_year;
-        $committees->committee_semester = $committee_semester;
-        $committees->committee_picture = $committee_picture;
-        $committees->committee_position = $committee_position;
-        $committees->save();
-        return redirect("profile-committee");
-
+        // $check = committee::where('committee_picture', Storage::get($profile_picture))->exists();
+        $exists = Storage::disk('local')->exists($committees->committee_picture);
+        if ($exists) {
+            $committees->username = $username;
+            $committees->committee_first_name = $committee_first_name;
+            $committees->committee_last_name = $committee_last_name;
+            $committees->committee_email = $committee_email;
+            $committees->committee_mobile_no = $committee_mobile_no;
+            $committees->committee_address = $committee_address;
+            $committees->committee_city = $committee_city;
+            $committees->committee_country = $committee_country;
+            $committees->committee_state = $committee_state;
+            $committees->committee_zipcode = $committee_zipcode;
+            $committees->committee_course = $committee_course;
+            $committees->committee_year = $committee_year;
+            $committees->committee_position = $committee_position;
+            $committees->committee_portfolio = $committee_portfolio;
+            Session::put('logged_user', $username);
+            $committees->save();
+            return redirect("committee-profile");
+        } else {
+            if ($request->hasFile('image')) {
+                $logoImage = $request->file('image');
+                $name = $logoImage->getClientOriginalName();
+                $size = $logoImage->getSize();
+            }
+            $request->file('image')->storeAs('public/images/', $name);
+            $committees->username = $username;
+            $committees->committee_first_name = $committee_first_name;
+            $committees->committee_last_name = $committee_last_name;
+            $committees->committee_email = $committee_email;
+            $committees->committee_mobile_no = $committee_mobile_no;
+            $committees->committee_address = $committee_address;
+            $committees->committee_city = $committee_city;
+            $committees->committee_country = $committee_country;
+            $committees->committee_state = $committee_state;
+            $committees->committee_zipcode = $committee_zipcode;
+            $committees->committee_course = $committee_course;
+            $committees->committee_year = $committee_year;
+            $committees->committee_semester = $committee_semester;
+            $committees->committee_position = $committee_position;
+            $committees->committee_portfolio = $committee_portfolio;
+            $committees->committee_picture = $name;
+            $committees->committee_picture_size = $size;
+            Session::put('logged_user', $username);
+            $committees->save();
+            return redirect("committee-profile");
+        }
     }
 
     /**
