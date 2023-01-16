@@ -26,9 +26,25 @@ class PropController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $req)
     {
-        return view('proposalreport.add-proposal');
+        $Author = $req->input('Author');
+        $MatricID = $req->input('MatricID');
+        $Title = $req->input('Title');
+        $File = $req->input('File');
+ 
+        //table meetings
+        $props = new prop;
+        //$activitiesses->userID = session()->get('logged_user');
+        $props->Author = $Author;
+        $props->MatricID = $MatricID; 
+        $props->Title = $Title;
+        $props->File = $File;
+        $props->save();
+
+        $prop=DB::table('prop')->get();
+
+        return view("proposalreport.view-proposal", compact('prop'));
     }
 
     /**
@@ -64,8 +80,8 @@ class PropController extends Controller
      */
     public function edit($id)
     {
-        $prop = prop::find($id);
-        return view('proposalreport.view-proposal')->with('proposalreport'. $prop);
+        $prop = DB::select('select * from prop where id = ?', [$id]);          
+        return view('proposalreport.update-proposal',['prop'=>$prop]);
     }
 
     /**
@@ -91,7 +107,9 @@ class PropController extends Controller
      */
     public function destroy($id)
     {
-        prop::destroy($id);
-        return redirect('prop')->with('flash_message'.'Proposal Deleted!');
+        $prop = DB::delete('delete from prop where id = ?', [$id]);          
+        $prop=DB::table('prop')->get();
+
+        return view("proposalreport.view-proposal", compact('prop'));
     }
 }

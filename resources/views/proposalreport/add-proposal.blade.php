@@ -1,3 +1,5 @@
+
+
 <?php
 
 $logged_user = session()->get('logged_user');
@@ -191,8 +193,8 @@ $roles = session()->get('role');
 			</table>
 			<br>
 			<input type="submit" class="btn btn-success" name="Submit" id="Submit" value="Submit" method="post">
-			<a href="view-proposal" class="btn btn-success">View Proposal<class="nav-link  @if(url()->current() ===  URL::to('/prop'))
-		active
+            <a href="view-proposal" input type="submit" class="btn btn-success" name="Submit" id="Submit" value="Submit" method="post"class="btn btn-success">View Proposal<class="nav-link  
+            @if(url()->current() ==  URL::to('/prop'))active
 		@endif">
 		</a>
 			</p>

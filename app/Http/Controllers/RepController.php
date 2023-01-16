@@ -15,7 +15,7 @@ class RepController extends Controller
      */
     public function index()
     {
-        $rep = DB::table('reps')->get();
+        $rep = DB::table('rep')->get();
         $url = route('rep');
         // return view('index-proposal');
         return view('proposalreport.add-report' ,compact('rep'));
@@ -26,9 +26,25 @@ class RepController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $req)
     {
-        return view('proposalreport.add-report');
+        $Author = $req->input('Author');
+        $Title = $req->input('Title');
+        $File = $req->input('File');
+        $Report = $req->input('Report');
+ 
+        //table meetings
+        $reps = new rep;
+        //$activitiesses->userID = session()->get('logged_user');
+        $reps->Author = $Author;
+        $reps->Title = $Title; 
+        $reps->File = $File;
+        $reps->Report = $Report;
+        $reps->save();
+
+        $rep=DB::table('rep')->get();
+
+        return view("proposalreport.view-report", compact('rep'));
     }
 
     /**
@@ -40,7 +56,7 @@ class RepController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        Rep::create($input);
+        rep::create($input);
         return redirect('rep')->with('flash_message', 'Report.Added!');
     }
 
@@ -64,8 +80,8 @@ class RepController extends Controller
      */
     public function edit($id)
     {
-        $rep = rep::find($id);
-        return view('proposalreport.view-report')->with('proposalreport'. $rep);
+        $rep = DB::select('select * from rep where id = ?', [$id]);          
+        return view('proposalreport.update-report',['rep'=>$rep]);
     }
 
     /**
@@ -91,7 +107,9 @@ class RepController extends Controller
      */
     public function destroy($id)
     {
-        rep::destroy($id);
-        return redirect('rep')->with('flash_message'.'Report Deleted!');
+        $rep = DB::delete('delete from rep where id = ?', [$id]);          
+        $rep=DB::table('rep')->get();
+
+        return view("proposalreport.view-report", compact('rep'));
     }
 }

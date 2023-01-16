@@ -142,11 +142,11 @@ $roles = session()->get('role');
 			</tr> 
       @foreach ($prop as $data)
    <tr>
-            <td>&nbsp&nbsp{{$data->propID}}</td>
+            <td>&nbsp&nbsp{{$data->id}}</td>
             <td>&nbsp&nbsp{{$data->Author}}</td>
             <td>&nbsp&nbsp{{$data->Title}}</td>
-            <td>&nbsp&nbsp{{$data->Report}}</td>
-			<td><a href="cl_edit/{{$data->propID}}" class="btn btn-success">Edit</a><a href="cl_delete/{{$data->propID}}" class="btn btn-danger">Delete</a></td>
+            <td>&nbsp&nbsp{{$data->File}}</td>
+			<td><a href="cl_edit/{{$data->id}}" class="btn btn-success">Edit</a><a href="cl_delete/{{$data->id}}" class="btn btn-danger">Delete</a></td>
     </tr>
      @endforeach
 		</table><br>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rep extends Model
 {
     use HasFactory;
-    protected $table = 'reps';
+    protected $table = 'rep';
     protected $primarykey ='id';
     protected $fillable = ['Author', 'Title', 'File','Report'];
 }

@@ -141,10 +141,10 @@ $roles = session()->get('role');
 				<td><td>
 					<p>
 					<td>
-					<label for="propID">Proposal ID:</label>
+					<label for="id">ID:</label>
 					</td>
 					<td>
-					<input type="text" class="form-control" name="propID" id="propID" value="{{ $prop[0]->propID }}" readonly> 
+					<input type="text" class="form-control" name="id" id="id" value="{{ $prop[0]->id }}" readonly> 
 					<td>
 					</p>
 				</td>

@@ -142,16 +142,11 @@ $roles = session()->get('role');
 			</tr> 
       @foreach ($rep as $data)
    <tr>
-            <td>&nbsp&nbsp{{$data->repID}}</td>
-            <!-- upload image -->
-            <!-- <td> -->
-            <!-- <img src="{{ asset($data->bulletinImage) }}" width= '60' height='60' class="img img-responsive" /> -->
-            <!-- </td> ->>
-            <!-- end upload image -->
+            <td>&nbsp&nbsp{{$data->id}}</td>
             <td>&nbsp&nbsp{{$data->Author}}</td>
             <td>&nbsp&nbsp{{$data->Title}}</td>
             <td>&nbsp&nbsp{{$data->Report}}</td>
-			<td><a href="cli_edit/{{$data->repID}}" class="btn btn-success">Edit</a><a href="cli_delete/{{$data->repID}}" class="btn btn-danger">Delete</a></td>
+			<td><a href="cli_edit/{{$data->id}}" class="btn btn-success">Edit</a><a href="cli_delete/{{$data->id}}" class="btn btn-danger">Delete</a></td>
     </tr>
      @endforeach
 		</table><br>

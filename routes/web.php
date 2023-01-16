@@ -139,20 +139,16 @@ Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 // Manage Proposal & Report
 
 Route::get('prop', [PropController::class, 'index'])->name('prop');
-Route::get('prop1', [PropController::class, 'create'])->name('prop1');
-Route::get('prop2', [PropController::class, 'store'])->name('prop2');
-Route::get('prop3', [PropController::class, 'show'])->name('prop3');
-Route::get('prop4', [PropController::class, 'edit'])->name('prop4');
-Route::get('prop5', [PropController::class, 'update'])->name('prop5');
-Route::get('prop6', [PropController::class, 'destroy'])->name('prop6');
+Route::post('proposalreport', [PropController::class, 'create'])->name('proposalreport');
+Route::get('cl_edit/{id}','PropController@edit');
+Route::get('cl_delete/{id}','PropController@destroy');
+
 
 Route::get('rep', [RepController::class, 'index'])->name('rep');
-Route::get('rep1', [RepController::class, 'create'])->name('rep1');
-Route::get('rep2', [RepController::class, 'store'])->name('rep2');
-Route::get('rep3', [RepController::class, 'show'])->name('rep3');
-Route::get('rep4', [RepController::class, 'edit'])->name('rep4');
-Route::get('rep5', [RepController::class, 'update'])->name('rep5');
-Route::get('rep6', [RepController::class, 'destroy'])->name('rep6');
+Route::post('proposalreport2', [RepController::class, 'create'])->name('proposalreport2');
+Route::get('cli_edit/{id}','RepController@edit');
+Route::get('cli_delete/{id}','RepController@destroy');
+
 // Route::get('viewcalendar', [FullCalenderController::class, 'view']);
 // Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
