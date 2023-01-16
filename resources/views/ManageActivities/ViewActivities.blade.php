@@ -99,7 +99,7 @@ $roles = session()->get('role');
                 <span class="material-symbols-rounded">calendar_month</span>
                 <h4>Yearly Calendar</h4>
             </a>
-            <a href="{{ route('report') }}" class="sidebar__btn">
+            <a href="{{ route('rep') }}" class="sidebar__btn">
                 <span class="material-symbols-rounded">list_alt</span>
                 <h4>Report</h4>
             </a>

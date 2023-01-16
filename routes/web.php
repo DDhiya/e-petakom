@@ -1,17 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RepController;
 use App\Http\Controllers\DeanController;
+use App\Http\Controllers\PropController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\BulletinController;
+use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\CommitteeController;
-use App\Http\Controllers\CoordinatorController;
-use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\ElectionController;
-use App\Http\Controllers\FullCalenderController;
-use App\Http\Controllers\BulletinController;
-use App\Http\Controllers\PropController;
 use App\Http\Controllers\ActivitiesController;
+use App\Http\Controllers\CoordinatorController;
+use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\AuthenticationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,9 +92,8 @@ Route::get('/home', function () {
 
 Route::view('activities', 'ManageActivities.AddActivities')->name('activities');
 Route::view('calendar', 'ManageCalendar.vieweditcalendar')->name('calendar');
-Route::view('report', 'ManageProfile.profile-student')->name('report');
-Route::view('prop', 'proposalreport.view-proposal')->name('prop');
-//Route::view('election', 'electioncommittee.ce-student')->name('election');
+Route::view('rep', 'proposalreport.add-report')->name('rep');
+Route::view('prop', 'proposalreport.add-proposal')->name('prop');
 Route::view('bulletin', 'ManageBulletin.AddBulletin')->name('bulletin');
 
 // VIEW ROUTES
@@ -138,6 +138,16 @@ Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 // Manage Proposal & Report
 
 Route::get('prop', [PropController::class, 'index'])->name('prop');
+Route::post('proposalreport', [PropController::class, 'create'])->name('proposalreport');
+Route::get('cl_edit/{id}','PropController@edit');
+Route::get('cl_delete/{id}','PropController@destroy');
+
+
+Route::get('rep', [RepController::class, 'index'])->name('rep');
+Route::post('proposalreport2', [RepController::class, 'create'])->name('proposalreport2');
+Route::get('cli_edit/{id}','RepController@edit');
+Route::get('cli_delete/{id}','RepController@destroy');
+
 // Route::get('viewcalendar', [FullCalenderController::class, 'view']);
 // Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
