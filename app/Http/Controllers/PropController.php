@@ -78,10 +78,10 @@ class PropController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $prop = DB::select('select * from prop where id = ?', [$id]);          
-        return view('proposalreport.update-proposal',['prop'=>$prop]);
+        $prop = DB::select('select * from prop where id = ?', [$request->id]);          
+        return view('proposalreport.update-proposal', compact('prop'));
     }
 
     /**
