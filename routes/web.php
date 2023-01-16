@@ -86,11 +86,33 @@ Route::get('/home', function () {
     }
 });
 
+//routing for petakom calendar
+Route::get('/login', function () {
+    $logged_user = session()->get('logged_user');
+    $role = session()->get('role');
+
+    if (!$logged_user) {
+        return view('layouts.login-signup');
+    } else {
+        if ($role == 'Dean') {
+            return view('ManageCalendar.viewcalendar');
+        } elseif ($role == 'Student') {
+            return view('ManageCalendar.viewcalendar');
+        } elseif ($role == 'Lecturer') {
+            return view('ManageCalendar.vieweditcalendar');
+        } elseif ($role == 'Committee') {
+            return view('ManageCalendar.vieweditcalendar');
+        } elseif ($role == 'Coordinator') {
+            return view('ManageCalendar.vieweditcalendar');
+        }
+    }
+})->name('calendar');
+
 // Route::get('/upload', [StudentController::class, 'create']);
 // Route::post('/upload', [StudentController::class, 'store']);
 
 Route::view('activities', 'ManageActivities.AddActivities')->name('activities');
-Route::view('calendar', 'ManageCalendar.vieweditcalendar')->name('calendar');
+// Route::view('calendar', 'ManageCalendar.vieweditcalendar')->name('calendar');
 Route::view('report', 'ManageProfile.profile-student')->name('report');
 Route::view('prop', 'proposalreport.view-proposal')->name('prop');
 //Route::view('election', 'electioncommittee.ce-student')->name('election');
