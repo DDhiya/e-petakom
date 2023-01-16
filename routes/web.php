@@ -11,7 +11,6 @@ use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\BulletinController;
 use App\Http\Controllers\PropController;
-
 use App\Http\Controllers\ActivitiesController;
 /*
 |--------------------------------------------------------------------------
@@ -169,6 +168,7 @@ Route::controller(ElectionController::class)->group(function(){
     Route::get('electionvotecandidate', 'GetApprovedCandidate')->name('getcandidates');
     Route::get('changeelectionstatus', 'GetElectionStatus')->name('getstatus');
     Route::get('changeelection', 'SetElectionStatus')->name('changeelection');
+    Route::get('electionvotingcount', 'GetVotingCount')->name('getvotingcount');
 });
 
 //testing routes

@@ -255,6 +255,55 @@ class ElectionController extends Controller
                                                                         'academiclist'));
     }
 
+    public function GetVotingCount()
+    {
+        $highcouncillist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Majlis Tertinggi')
+                                ->get();
+
+        $publicitylist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Hebahan & Publisiti')
+                                ->get();
+
+        $logisticlist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Keusahawanan & Logistik')
+                                ->get();
+
+        $sportslist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Sukan & Rekreasi')
+                                ->get();
+        
+        $relationslist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Komuniti Luar & Hubungan Antarabangsa')
+                                ->get();
+
+        $multimedialist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Multimedia')
+                                ->get();
+                                
+        $welfarelist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Sahsiah & Kebajikan')
+                                ->get();
+
+        $academiclist=DB::table('approved_candidates')
+                                ->where('position', '=', 'Portfolio Akademik & Kerjaya')
+                                ->get();
+        // dd($highcouncillist);
+
+        $electionrow = Election::first();
+        $status = $electionrow->status;
+
+        return view('electioncommittee.ce-voting-count', compact('status',
+                                                                        'highcouncillist', 
+                                                                        'publicitylist', 
+                                                                        'logisticlist',
+                                                                        'sportslist',
+                                                                        'relationslist',
+                                                                        'multimedialist',
+                                                                        'welfarelist',
+                                                                        'academiclist'));
+    }
+
     public function RegisterVote(Request $request)
     {
         foreach ($request->input('votecandidate') as $candidate) {
@@ -265,12 +314,6 @@ class ElectionController extends Controller
             //             ->update(['votecount']);
         }
         return to_route('election');
-    }
-
-    public function GetVotingCount()
-    {
-        $votingcount = ApprovedCandidate::all();
-        return $votingcount;
     }
 
     public function ExportVotingCountPDF()
