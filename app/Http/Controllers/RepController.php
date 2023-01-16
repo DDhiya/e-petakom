@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\prop;
+
+use App\Models\Rep;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PropController extends Controller
+class RepController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +15,10 @@ class PropController extends Controller
      */
     public function index()
     {
-        $prop = DB::table('prop')->get();
-        $url = route('prop');
+        $rep = DB::table('rep')->get();
+        $url = route('rep');
         // return view('index-proposal');
-        return view('proposalreport.add-proposal' ,compact('prop'));
-
+        return view('proposalreport.add-report' ,compact('rep'));
     }
 
     /**
@@ -29,22 +29,22 @@ class PropController extends Controller
     public function create(Request $req)
     {
         $Author = $req->input('Author');
-        $MatricID = $req->input('MatricID');
         $Title = $req->input('Title');
         $File = $req->input('File');
+        $Report = $req->input('Report');
  
         //table meetings
-        $props = new prop;
+        $reps = new rep;
         //$activitiesses->userID = session()->get('logged_user');
-        $props->Author = $Author;
-        $props->MatricID = $MatricID; 
-        $props->Title = $Title;
-        $props->File = $File;
-        $props->save();
+        $reps->Author = $Author;
+        $reps->Title = $Title; 
+        $reps->File = $File;
+        $reps->Report = $Report;
+        $reps->save();
 
-        $prop=DB::table('prop')->get();
+        $rep=DB::table('rep')->get();
 
-        return view("proposalreport.view-proposal", compact('prop'));
+        return view("proposalreport.view-report", compact('rep'));
     }
 
     /**
@@ -56,8 +56,8 @@ class PropController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        prop::create($input);
-        return redirect('prop')->with('flash_message', 'Proposal.Added!');
+        rep::create($input);
+        return redirect('rep')->with('flash_message', 'Report.Added!');
     }
 
     /**
@@ -68,8 +68,8 @@ class PropController extends Controller
      */
     public function show($id)
     {
-        $prop = prop::find($id);
-        return view('proposalreport.update-proposal')->with('proposalreport'.$prop);
+        $rep = rep::find($id);
+        return view('proposalreport.update-report')->with('proposalreport'.$rep);
     }
 
     /**
@@ -80,8 +80,8 @@ class PropController extends Controller
      */
     public function edit($id)
     {
-        $prop = DB::select('select * from prop where id = ?', [$id]);          
-        return view('proposalreport.update-proposal',['prop'=>$prop]);
+        $rep = DB::select('select * from rep where id = ?', [$id]);          
+        return view('proposalreport.update-report',['rep'=>$rep]);
     }
 
     /**
@@ -93,10 +93,10 @@ class PropController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $prop = prop::find($id);
+        $rep = rep::find($id);
         $input = $request->all();
-        $prop->update($input);
-        return redirect('prop')->with('flash_message'. 'Proposal Updated!');
+        $rep->update($input);
+        return redirect('rep')->with('flash_message'. 'Report Updated!');
     }
 
     /**
@@ -107,9 +107,9 @@ class PropController extends Controller
      */
     public function destroy($id)
     {
-        $prop = DB::delete('delete from prop where id = ?', [$id]);          
-        $prop=DB::table('prop')->get();
+        $rep = DB::delete('delete from rep where id = ?', [$id]);          
+        $rep=DB::table('rep')->get();
 
-        return view("proposalreport.view-proposal", compact('prop'));
+        return view("proposalreport.view-report", compact('rep'));
     }
 }
