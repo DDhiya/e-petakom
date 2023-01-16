@@ -26,6 +26,7 @@ class RepController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //funtion for add report
     public function create(Request $req)
     {
         $Author = $req->input('Author');
@@ -33,9 +34,8 @@ class RepController extends Controller
         $File = $req->input('File');
         $Report = $req->input('Report');
  
-        //table meetings
+        //table
         $reps = new rep;
-        //$activitiesses->userID = session()->get('logged_user');
         $reps->Author = $Author;
         $reps->Title = $Title; 
         $reps->File = $File;
@@ -66,6 +66,7 @@ class RepController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //function for update 
     public function show($id)
     {
         $rep = rep::find($id);
@@ -78,6 +79,7 @@ class RepController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //function for edit report
     public function edit($id)
     {
         $rep = DB::select('select * from rep where id = ?', [$id]);          
@@ -105,6 +107,7 @@ class RepController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //function for delete report
     public function destroy($id)
     {
         $rep = DB::delete('delete from rep where id = ?', [$id]);          

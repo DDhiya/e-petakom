@@ -60,15 +60,9 @@ $roles = session()->get('role');
                     <img src="../images/profile-1.png">
                 </div>
                 <h5 class="mt-2">CB19070</h5>
-                <span class="material-symbols-rounded">
-                    expand_more
-                </span>
+                
             </div>
-            <button id="menu__btn">
-                <span class="material-symbols-rounded">
-                    menu
-                </span>
-            </button>
+            <a href="{{ route('user-logout') }}" class="btn btn-danger" role="button">Logout</a>
         </div>
     </div>
 </div>

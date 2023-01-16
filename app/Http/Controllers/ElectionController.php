@@ -27,6 +27,7 @@ class ElectionController extends Controller
     //     //
     // }
 
+    //register new candidate into registered_candidate table
     public function RegisterNewCandidate(Request $request)
     {
         $registered = new RegisteredCandidate();
@@ -85,6 +86,7 @@ class ElectionController extends Controller
             return view('electioncommittee/ce-student');
     }
 
+    //get entries in registered_candidate table by each position using where query
     public function GetRegisteredCandidate()
     {
         $highcouncillist=DB::table('registered_candidates')
@@ -129,6 +131,7 @@ class ElectionController extends Controller
                                                                         'academiclist'));
     }
 
+    //approve new candidate into approved_candidate table
     public function ApproveNewCandidate(Request $request)
     {
         $data = $request->input('action');
@@ -170,6 +173,7 @@ class ElectionController extends Controller
             return true;
     }
 
+    //Get Election Status from election table
     public function GetElectionStatus()
     {
         //query last row of status column value
@@ -179,6 +183,7 @@ class ElectionController extends Controller
         return view('electioncommittee.ce-committee-election', compact('status'));
     }
 
+    //Set Election Status into status column in election table
     public function SetElectionStatus()
     {
         $electionrow = Election::first();

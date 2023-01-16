@@ -20,7 +20,7 @@ class BulletinController extends Controller
             ->get();
         return View('ManageBulletin.addBulletin')->with('bulletins', $bulletins);
     }
-    
+    // add bulletin
     function addBulletin(Request $req) // add bulletin
     {
         $bulletinID = $req->input('bulletinID');
@@ -40,7 +40,6 @@ class BulletinController extends Controller
         bulletins::create($data);
         return redirect('bulletins')->with('flash_message', 'Bulletin Added!'); */
 
-        //  dhiya punya
         //optional
         if($validatedpicture = $req->validate([
             'bulletinImage' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -51,14 +50,12 @@ class BulletinController extends Controller
         }
         //end optional
         $bulletins->bulletinImage = $req->file('bulletinImage')->store('public/images');
-        // end dhiya punya
-        // end upload image
         $bulletins->title = $title;
         $bulletins->description = $description;
         $bulletins->save();
         return redirect("ViewBulletin");
     }
-    
+    // view bulletin
     function viewBulletin() //view bulletin
     {
         $username = session()->get('logged_user');

@@ -26,7 +26,7 @@ $.ajaxSetup({
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
-  
+  //display calendar
 var calendar = $('#calendar').fullCalendar({
                     editable: true,
                     events: SITEURL + "/fullcalender",
@@ -43,7 +43,7 @@ var calendar = $('#calendar').fullCalendar({
                     selectable: true,
                     selectHelper: true,
                     select: function (start, end, allDay) {
-
+//add event calendar
                         var title = prompt('Event Title:');
                         if (title) {
                             var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
@@ -77,7 +77,7 @@ var calendar = $('#calendar').fullCalendar({
                     eventDrop: function (event, delta) {
                         var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
                         var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
-  
+  //update event calendar
                         $.ajax({
                             url: SITEURL + '/fullcalenderAjax',
                             data: {
@@ -93,6 +93,7 @@ var calendar = $('#calendar').fullCalendar({
                             }
                         });
                     },
+                    //delete event calendar
                     eventClick: function (event) {
                         var deleteMsg = confirm("Do you really want to delete?");
                         if (deleteMsg) {

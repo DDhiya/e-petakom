@@ -11,6 +11,7 @@ class FullCalenderController extends Controller
      *
      * @return response()
      */
+    //display calendar
     public function index(Request $request)
     {
   
@@ -31,6 +32,7 @@ class FullCalenderController extends Controller
      *
      * @return response()
      */
+    //add and create event calendar
     public function ajax(Request $request)
     {
  
@@ -54,7 +56,7 @@ class FullCalenderController extends Controller
  
               return response()->json($event);
              break;
-  
+  //delete event calendar
            case 'delete':
               $event = Event::find($request->id)->delete();
   

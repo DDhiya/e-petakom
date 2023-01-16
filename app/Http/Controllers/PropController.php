@@ -26,6 +26,7 @@ class PropController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //function for add proposal
     public function create(Request $req)
     {
         $Author = $req->input('Author');
@@ -33,9 +34,8 @@ class PropController extends Controller
         $Title = $req->input('Title');
         $File = $req->input('File');
  
-        //table meetings
+        //table
         $props = new prop;
-        //$activitiesses->userID = session()->get('logged_user');
         $props->Author = $Author;
         $props->MatricID = $MatricID; 
         $props->Title = $Title;
@@ -43,7 +43,6 @@ class PropController extends Controller
         $props->save();
 
         $prop=DB::table('prop')->get();
-
         return view("proposalreport.view-proposal", compact('prop'));
     }
 
@@ -78,6 +77,7 @@ class PropController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //function for edit proposal
     public function edit(Request $request)
     {
         $prop = DB::select('select * from prop where id = ?', [$request->id]);          
@@ -105,6 +105,7 @@ class PropController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //function for delete proposal
     public function destroy($id)
     {
         $prop = DB::delete('delete from prop where id = ?', [$id]);          

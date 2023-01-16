@@ -7,7 +7,7 @@ $roles = session()->get('role');
 ?>
 
 @extends('layouts.maincalendar')
-
+//interface for view calendar by student and Dean
 @section('content')
 
 <div class="container" style="max-width: 1000px">
