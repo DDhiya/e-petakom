@@ -487,7 +487,7 @@ main input.input__text {
 .input__field>.matric-id {
     height: 3.6rem;
     background: transparent;
-    margin: 22px 0;
+    margin:14px 0;
     border: 2px solid var(--color-gray-very-light);
     border-radius: 0.5rem;
     align-items: center;
@@ -645,6 +645,31 @@ select.form-select {
 .file__upload__container {
     position: relative;
     margin-top: 2rem;
+}
+
+.portfolio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1rem;
+}
+
+
+
+.portfolio-dropdown {
+    background: var(--form-select-bg);
+    height: var(--form-select-height);
+    width: 138px;
+    border: var(--form-select-border);
+    border-radius: var(--form-select-border-radius);
+    background: var(--form-select-background);
+    color: var(--form-select-color);
+    font-family: var(--form-select-font-family);
+    font-weight: var(--form-select-font-weight);
+    margin: 15px 0;
+    cursor: var(--form-select-cursor);
+    padding: var(--form-select-padding);
+    font-size: var(--form-select-font-size);
 }
 
 /* ======= MEDIA QUERIES FOR TABLETS (REPONSIVE DESIGN) ======== */

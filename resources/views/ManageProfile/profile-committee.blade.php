@@ -145,49 +145,6 @@ $roles = session()->get('role');
                                     <option value="9">9</option>
                                 </select>
                         </div>
-                        <div class="portfolio">
-                            <div class="portfolio__name">
-                                <h4>Portfolio</h4>
-                                <div class="course__dropdown">
-                                    <select class="form-select" name="committee_semester">
-                                        <option selected>{{ $committees[0]->committee_semester }}</option>
-                                        <option value="Majlis Tertinggi">Majlis Tertinggi</option>
-                                        <option value="Portfolio Sukan & Rekreasi">Portfolio Sukan & Rekreasi</option>
-                                        <option value="Portfolio Keusahawanan & Logistik">Portfolio Keusahawanan & Logistik
-                                        </option>
-                                        <option value="Portfolio Komuniti Luar & Hubungan Antarabangsa">Portfolio Komuniti
-                                            Luar & Hubungan Antarabangsa</option>
-                                        <option value="Portfolio Hebahan & Publisiti">Portfolio Hebahan & Publisiti
-                                        </option>
-                                        <option value="Portfolio Multimedia">Portfolio Multimedia</option>
-                                        <option value="Portfolio Sahsiah & Kebajikan">Portfolio Sahsiah & Kebajikan
-                                        </option>
-                                        <option value="Portfolio Akademik & Kerjaya">Portfolio Akademik & Kerjaya</option>
-                                    </select>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="portfolio__position">
-                                <h4>Position</h4>
-                                <div class="course__dropdown">
-                                    <select class="form-select" name="committee_semester">
-                                        <option selected>{{ $committees[0]->committee_semester }}</option>
-                                        <option value="Majlis Tertinggi">Majlis Tertinggi</option>
-                                        <option value="Portfolio Sukan & Rekreasi">Portfolio Sukan & Rekreasi</option>
-                                        <option value="Portfolio Keusahawanan & Logistik">Portfolio Keusahawanan & Logistik
-                                        </option>
-                                        <option value="Portfolio Komuniti Luar & Hubungan Antarabangsa">Portfolio Komuniti
-                                            Luar & Hubungan Antarabangsa</option>
-                                        <option value="Portfolio Hebahan & Publisiti">Portfolio Hebahan & Publisiti
-                                        </option>
-                                        <option value="Portfolio Multimedia">Portfolio Multimedia</option>
-                                        <option value="Portfolio Sahsiah & Kebajikan">Portfolio Sahsiah & Kebajikan
-                                        </option>
-                                        <option value="Portfolio Akademik & Kerjaya">Portfolio Akademik & Kerjaya</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
                         <div class="matric__id">
                             <h4>Matric ID</h4>
                             <div class="input__field">
@@ -196,8 +153,46 @@ $roles = session()->get('role');
                             </div>
                         </div>
                     </div>
+                    <div class="portfolio">
+                        <div class="portfolio__name">
+                            <h4>Portfolio</h4>
+                            <div class="portfolio__dropdown">
+                                <select class="form-select portfolio-dropdown" name="committee_portfolio">
+                                    <option selected>{{ $committees[0]->committee_portfolio }}</option>
+                                    <option value="Majlis Tertinggi">Majlis Tertinggi</option>
+                                    <option value="Sukan & Rekreasi">Sukan & Rekreasi</option>
+                                    <option value="Keusahawanan & Logistik">Keusahawanan & Logistik
+                                    </option>
+                                    <option value="Komuniti Luar & Hubungan Antarabangsa">Komuniti
+                                        Luar & Hubungan Antarabangsa</option>
+                                    <option value="Hebahan & Publisiti">Hebahan & Publisiti
+                                    </option>
+                                    <option value="Multimedia">Multimedia</option>
+                                    <option value="Sahsiah & Kebajikan">Sahsiah & Kebajikan
+                                    </option>
+                                    <option value="Akademik & Kerjaya">Akademik & Kerjaya</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="portfolio__position">
+                            <h4>Position</h4>
+                            <div class="portfolio__dropdown">
+                                <select class="form-select portfolio-dropdown" name="committee_position">
+                                    <option selected>{{ $committees[0]->committee_position }}</option>
+                                    <option value="Ketua Portfolio">Ketua Portfolio</option>
+                                    <option value="Timbalan Ketua Portfolio">Timbalan Ketua Portfolio</option>
+                                    <option value="Ahli Portfolio">Ahli Portfolio
+                                    </option>
+                                    <option value="Apprentice">Apprentice
+                                        Luar & Hubungan Antarabangsa</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </form>
 @endsection

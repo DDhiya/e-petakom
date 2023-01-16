@@ -135,7 +135,7 @@ $roles = session()->get('role');
 	<fieldset>
 		     <br>
 			 <table class="center">
-				<form action="/update" method="POST">
+				<form action="/updatebulletin" method="POST">
                 @csrf
 				<center>
 				<td><td>
