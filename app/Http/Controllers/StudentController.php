@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
-use Illuminate\Http\Request;
-use App\Models\Authentication;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\Authentication;
+use App\Models\Student;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -19,7 +20,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        
+
         $username = session()->get('logged_user');
         $authentication = DB::table('authentications')
             ->Join('students', 'authentications.username', '=', 'students.username')
@@ -51,12 +52,6 @@ class StudentController extends Controller
         $student_course = $request->input('student_course');
         $student_year = $request->input('student_year');
         $student_semester = $request->input('student_semester');
-        if($request->hasFile('image')){
-            $logoImage = $request->file('image');
-            $name = $logoImage->getClientOriginalName();
-            $size = $logoImage->getSize();
-        }
-        $request->file('image')->storeAs('public/images/', $name);
 
         //table authentications
         $authentications = Authentication::where('username', '=', session()->get('logged_user'))->get()->first();
@@ -66,24 +61,51 @@ class StudentController extends Controller
 
         //table students
         $students = Student::where('username', '=', session()->get('logged_user'))->get()->first();
-        $students->username = $username;
-        $students->student_first_name = $student_first_name;
-        $students->student_last_name = $student_last_name;
-        $students->student_email = $student_email;
-        $students->student_mobile_no = $student_mobile_no;
-        $students->student_address = $student_address;
-        $students->student_city = $student_city;
-        $students->student_country = $student_country;
-        $students->student_state = $student_state;
-        $students->student_zipcode = $student_zipcode;
-        $students->student_course = $student_course;
-        $students->student_year = $student_year;
-        $students->student_semester = $student_semester;
-        $students->student_picture = $name;
-        $students->student_picture_size = $size;
-        Session::put('logged_user', $username);
-        $students->save();
-        return redirect("student-profile");
+        // $check = Student::where('student_picture', Storage::get($profile_picture))->exists();
+        $exists = Storage::disk('local')->exists($students->student_picture);
+        if ($exists) {
+            $students->username = $username;
+            $students->student_first_name = $student_first_name;
+            $students->student_last_name = $student_last_name;
+            $students->student_email = $student_email;
+            $students->student_mobile_no = $student_mobile_no;
+            $students->student_address = $student_address;
+            $students->student_city = $student_city;
+            $students->student_country = $student_country;
+            $students->student_state = $student_state;
+            $students->student_zipcode = $student_zipcode;
+            $students->student_course = $student_course;
+            $students->student_year = $student_year;
+            $students->student_semester = $student_semester;
+            Session::put('logged_user', $username);
+            $students->save();
+            return redirect("student-profile");
+        } else {
+            if ($request->hasFile('image')) {
+                $logoImage = $request->file('image');
+                $name = $logoImage->getClientOriginalName();
+                $size = $logoImage->getSize();
+            }
+            $request->file('image')->storeAs('public/images/', $name);
+            $students->username = $username;
+            $students->student_first_name = $student_first_name;
+            $students->student_last_name = $student_last_name;
+            $students->student_email = $student_email;
+            $students->student_mobile_no = $student_mobile_no;
+            $students->student_address = $student_address;
+            $students->student_city = $student_city;
+            $students->student_country = $student_country;
+            $students->student_state = $student_state;
+            $students->student_zipcode = $student_zipcode;
+            $students->student_course = $student_course;
+            $students->student_year = $student_year;
+            $students->student_semester = $student_semester;
+            $students->student_picture = $name;
+            $students->student_picture_size = $size;
+            Session::put('logged_user', $username);
+            $students->save();
+            return redirect("student-profile");
+        }
     }
 
     /**
