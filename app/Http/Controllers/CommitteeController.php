@@ -20,8 +20,8 @@ class CommitteeController extends Controller
     {
         $username = session()->get('logged_user');
         $authentication = DB::table('authentications')
-            ->Join('committees', 'authentications.username', '=', 'committee.username')
-            ->where('authentication.username', '=', $username)
+            ->Join('committees', 'authentications.username', '=', 'committees.username')
+            ->where('authentications.username', '=', $username)
             ->get();
         return View('ManageProfile.profile-committee')->with('committees', $authentication);
         //var_dump($users);
