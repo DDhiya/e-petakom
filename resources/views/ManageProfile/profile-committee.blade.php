@@ -74,7 +74,8 @@ $roles = session()->get('role');
                     <div>
                         <h4>Password</h4>
                     </div>
-                    <input type="password" class="input2 input__text" value="{{ $committees[0]->password }}" name="password">
+                    <input type="password" class="input2 input__text" value="{{ $committees[0]->password }}"
+                        name="password">
                     <span class="material-symbols-outlined show">
                         visibility
                     </span>
@@ -90,7 +91,8 @@ $roles = session()->get('role');
                 <div class="fourth__container profile__picture__container">
                     <div class="profile__picture">
                         <h1>Profile Picture</h1>
-                        <img class="profile-picture-manageprofile" src="{{ asset('storage/images/'.$committees[0]->committee_picture) }}" height="100px">
+                        <img class="profile-picture-manageprofile"
+                            src="{{ asset('storage/images/' . $committees[0]->committee_picture) }}" height="100px">
                         <div class="file__upload__container">
                             <input type="file" name="image">
                         </div>
@@ -143,10 +145,54 @@ $roles = session()->get('role');
                                     <option value="9">9</option>
                                 </select>
                         </div>
+                        <div class="portfolio">
+                            <div class="portfolio__name">
+                                <h4>Portfolio</h4>
+                                <div class="course__dropdown">
+                                    <select class="form-select" name="committee_semester">
+                                        <option selected>{{ $committees[0]->committee_semester }}</option>
+                                        <option value="Majlis Tertinggi">Majlis Tertinggi</option>
+                                        <option value="Portfolio Sukan & Rekreasi">Portfolio Sukan & Rekreasi</option>
+                                        <option value="Portfolio Keusahawanan & Logistik">Portfolio Keusahawanan & Logistik
+                                        </option>
+                                        <option value="Portfolio Komuniti Luar & Hubungan Antarabangsa">Portfolio Komuniti
+                                            Luar & Hubungan Antarabangsa</option>
+                                        <option value="Portfolio Hebahan & Publisiti">Portfolio Hebahan & Publisiti
+                                        </option>
+                                        <option value="Portfolio Multimedia">Portfolio Multimedia</option>
+                                        <option value="Portfolio Sahsiah & Kebajikan">Portfolio Sahsiah & Kebajikan
+                                        </option>
+                                        <option value="Portfolio Akademik & Kerjaya">Portfolio Akademik & Kerjaya</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="portfolio__position">
+                                <h4>Position</h4>
+                                <div class="course__dropdown">
+                                    <select class="form-select" name="committee_semester">
+                                        <option selected>{{ $committees[0]->committee_semester }}</option>
+                                        <option value="Majlis Tertinggi">Majlis Tertinggi</option>
+                                        <option value="Portfolio Sukan & Rekreasi">Portfolio Sukan & Rekreasi</option>
+                                        <option value="Portfolio Keusahawanan & Logistik">Portfolio Keusahawanan & Logistik
+                                        </option>
+                                        <option value="Portfolio Komuniti Luar & Hubungan Antarabangsa">Portfolio Komuniti
+                                            Luar & Hubungan Antarabangsa</option>
+                                        <option value="Portfolio Hebahan & Publisiti">Portfolio Hebahan & Publisiti
+                                        </option>
+                                        <option value="Portfolio Multimedia">Portfolio Multimedia</option>
+                                        <option value="Portfolio Sahsiah & Kebajikan">Portfolio Sahsiah & Kebajikan
+                                        </option>
+                                        <option value="Portfolio Akademik & Kerjaya">Portfolio Akademik & Kerjaya</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="matric__id">
                             <h4>Matric ID</h4>
                             <div class="input__field">
-                                <input type="matric-id" class="matric-id" value="{{ $committees[0]->username }}" name="matric-id">
+                                <input type="matric-id" class="matric-id" value="{{ $committees[0]->username }}"
+                                    name="matric-id">
                             </div>
                         </div>
                     </div>

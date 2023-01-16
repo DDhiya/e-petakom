@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('committee_city')->nullable();
             $table->string('committee_state')->nullable();
             $table->string('committee_zipcode')->nullable();
+            $table->string('committee_country')->nullable();
             $table->string('committee_course')->nullable();
             $table->string('committee_year')->nullable();
             $table->string('committee_semester')->nullable();

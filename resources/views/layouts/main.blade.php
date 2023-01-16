@@ -57,7 +57,22 @@ $roles = session()->get('role');
             </div>
             <div class="profile__container">
                 <div class="profile__photo">
-                    <img src="{{ asset('storage/images/'.$students[0]->student_picture) }}" class="profile-picture-navbar">
+                    @if ($roles == 'Student')
+                        <img src="{{ asset('storage/images/' . $students[0]->student_picture) }}"
+                            class="profile-picture-navbar">
+                    @elseif ($roles == 'Lecturer')
+                        <img src="{{ asset('storage/images/' . $lecturers[0]->lecturer_picture) }}"
+                            class="profile-picture-navbar">
+                    @elseif ($roles == 'Committee')
+                        <img src="{{ asset('storage/images/' . $committees[0]->committee_picture) }}"
+                            class="profile-picture-navbar">
+                    @elseif ($roles == 'Dean')
+                        <img src="{{ asset('storage/images/' . $deans[0]->dean_picture) }}"
+                            class="profile-picture-navbar">
+                    @elseif ($roles == 'Coordinator') 
+                        <img src="{{ asset('storage/images/' . $coordinators[0]->coordinator_picture) }}"
+                            class="profile-picture-navbar">
+                    @endif
                 </div>
                 <h5 class="mt-2">{{ $logged_user }}</h5>
             </div>
